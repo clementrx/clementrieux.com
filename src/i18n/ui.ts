@@ -43,7 +43,14 @@ interface UI {
     ctaContact: string;
     domainsTitle: string;
   };
-  expertise: { title: string; intro: string; inShort: string };
+  expertise: {
+    title: string;
+    intro: string;
+    inShort: string;
+    toolbox: string;
+    certificationsTitle: string;
+    verify: string;
+  };
   experience: {
     title: string;
     intro: string;
@@ -75,7 +82,7 @@ export const ui = {
       expertise: {
         title: "Expertise — Clément Rieux",
         description:
-          "Data science and machine learning, quantitative research, sports performance data, and working with LLMs and coding agents.",
+          "Data science and machine learning in Python and R, AI agents and LLM applications, Anthropic certifications, working style and athletic background.",
       },
       experience: {
         title: "Experience — Clément Rieux",
@@ -106,8 +113,11 @@ export const ui = {
     expertise: {
       title: "Expertise",
       intro:
-        "Four areas where I can help. Each one opens with a plain-language summary; the details that follow are written for specialists.",
+        "What I know, how I work and where I come from. Each section opens with a plain-language summary; the details that follow are written for specialists.",
       inShort: "In short",
+      toolbox: "Toolbox",
+      certificationsTitle: "Anthropic certifications",
+      verify: "Verify",
     },
     experience: {
       title: "Experience",
@@ -119,29 +129,47 @@ export const ui = {
       languages: "Languages",
       present: "present",
       skillGroups: [
-        { label: "Programming", items: ["Python", "R", "SQL", "PySpark", "SAS"] },
+        { label: "Programming", items: ["Python", "R", "SQL"] },
         {
-          label: "Modelling",
+          label: "Data",
           items: [
-            "Gradient boosting",
-            "Deep learning for computer vision",
-            "Time series forecasting",
-            "Scoring",
-            "Geostatistics",
-            "NLP",
+            "pandas",
+            "Polars",
+            "NumPy",
+            "scikit-learn",
+            "PySpark",
+            "Oracle",
+            "Hive",
+            "PostgreSQL",
           ],
         },
         {
-          label: "Data engineering",
-          items: ["PostgreSQL", "Parquet", "pandas / Polars", "Web scraping", "R Shiny"],
+          label: "Modelling",
+          items: [
+            "Time series",
+            "Classification",
+            "NLP",
+            "RAG",
+            "Machine learning",
+            "Deep learning",
+            "Reinforcement learning",
+            "Econometrics",
+          ],
         },
         {
-          label: "Engineering practice",
-          items: ["Git", "Linux", "CI (GitHub Actions)", "Automated tests"],
+          label: "Production",
+          items: ["Pipelines", "Datamarts", "R Shiny", "Docker", "AWS", "GCP", "Git", "CI"],
         },
         {
-          label: "AI-assisted work",
-          items: ["Claude Code", "Codex", "Local LLMs (Ollama, MLX)"],
+          label: "AI agents",
+          items: [
+            "Claude API",
+            "Claude Code",
+            "Codex",
+            "MCP",
+            "Agent skills",
+            "Local LLMs (Ollama, MLX)",
+          ],
         },
       ],
       spokenLanguages: ["French: native", "English: fluent", "Spanish: intermediate"],
@@ -169,7 +197,7 @@ export const ui = {
       expertise: {
         title: "Expertise — Clément Rieux",
         description:
-          "Data science et machine learning, recherche quantitative, données de performance sportive, travail avec les LLM et les agents de code.",
+          "Data science et machine learning en Python et R, agents IA et applications LLM, certifications Anthropic, méthode de travail et parcours sportif.",
       },
       experience: {
         title: "Parcours — Clément Rieux",
@@ -200,8 +228,11 @@ export const ui = {
     expertise: {
       title: "Expertise",
       intro:
-        "Quatre domaines où je peux vous aider. Chacun commence par un résumé en langage courant ; le détail qui suit s'adresse aux spécialistes.",
+        "Ce que je sais faire, comment je travaille et d'où je viens. Chaque partie commence par un résumé en langage courant ; le détail qui suit s'adresse aux spécialistes.",
       inShort: "En bref",
+      toolbox: "Boîte à outils",
+      certificationsTitle: "Certifications Anthropic",
+      verify: "Vérifier",
     },
     experience: {
       title: "Parcours",
@@ -213,29 +244,47 @@ export const ui = {
       languages: "Langues",
       present: "aujourd'hui",
       skillGroups: [
-        { label: "Programmation", items: ["Python", "R", "SQL", "PySpark", "SAS"] },
+        { label: "Programmation", items: ["Python", "R", "SQL"] },
         {
-          label: "Modélisation",
+          label: "Données",
           items: [
-            "Gradient boosting",
-            "Deep learning pour la vision",
-            "Prévision de séries temporelles",
-            "Scoring",
-            "Géostatistique",
-            "NLP",
+            "pandas",
+            "Polars",
+            "NumPy",
+            "scikit-learn",
+            "PySpark",
+            "Oracle",
+            "Hive",
+            "PostgreSQL",
           ],
         },
         {
-          label: "Data engineering",
-          items: ["PostgreSQL", "Parquet", "pandas / Polars", "Web scraping", "R Shiny"],
+          label: "Modélisation",
+          items: [
+            "Séries temporelles",
+            "Classification",
+            "NLP",
+            "RAG",
+            "Machine learning",
+            "Deep learning",
+            "Apprentissage par renforcement",
+            "Économétrie",
+          ],
         },
         {
-          label: "Pratiques d'ingénierie",
-          items: ["Git", "Linux", "CI (GitHub Actions)", "Tests automatisés"],
+          label: "Production",
+          items: ["Pipelines", "Datamarts", "R Shiny", "Docker", "AWS", "GCP", "Git", "CI"],
         },
         {
-          label: "Travail assisté par l'IA",
-          items: ["Claude Code", "Codex", "LLM locaux (Ollama, MLX)"],
+          label: "Agents IA",
+          items: [
+            "Claude API",
+            "Claude Code",
+            "Codex",
+            "MCP",
+            "Skills d'agent",
+            "LLM locaux (Ollama, MLX)",
+          ],
         },
       ],
       spokenLanguages: [
@@ -267,7 +316,7 @@ export const ui = {
       expertise: {
         title: "Especialidades — Clément Rieux",
         description:
-          "Ciencia de datos y machine learning, investigación cuantitativa, datos de rendimiento deportivo y trabajo con LLM y agentes de código.",
+          "Ciencia de datos y machine learning en Python y R, agentes de IA y aplicaciones LLM, certificaciones de Anthropic, forma de trabajar y trayectoria deportiva.",
       },
       experience: {
         title: "Trayectoria — Clément Rieux",
@@ -298,8 +347,11 @@ export const ui = {
     expertise: {
       title: "Especialidades",
       intro:
-        "Cuatro áreas en las que puedo ayudar. Cada una empieza con un resumen en lenguaje sencillo; los detalles que siguen están pensados para especialistas.",
+        "Lo que sé hacer, cómo trabajo y de dónde vengo. Cada sección empieza con un resumen en lenguaje sencillo; los detalles que siguen están pensados para especialistas.",
       inShort: "En resumen",
+      toolbox: "Herramientas",
+      certificationsTitle: "Certificaciones de Anthropic",
+      verify: "Verificar",
     },
     experience: {
       title: "Trayectoria",
@@ -311,29 +363,47 @@ export const ui = {
       languages: "Idiomas",
       present: "actualidad",
       skillGroups: [
-        { label: "Programación", items: ["Python", "R", "SQL", "PySpark", "SAS"] },
+        { label: "Programación", items: ["Python", "R", "SQL"] },
         {
-          label: "Modelización",
+          label: "Datos",
           items: [
-            "Gradient boosting",
-            "Deep learning para visión",
-            "Previsión de series temporales",
-            "Scoring",
-            "Geoestadística",
-            "NLP",
+            "pandas",
+            "Polars",
+            "NumPy",
+            "scikit-learn",
+            "PySpark",
+            "Oracle",
+            "Hive",
+            "PostgreSQL",
           ],
         },
         {
-          label: "Ingeniería de datos",
-          items: ["PostgreSQL", "Parquet", "pandas / Polars", "Web scraping", "R Shiny"],
+          label: "Modelización",
+          items: [
+            "Series temporales",
+            "Clasificación",
+            "NLP",
+            "RAG",
+            "Machine learning",
+            "Deep learning",
+            "Aprendizaje por refuerzo",
+            "Econometría",
+          ],
         },
         {
-          label: "Prácticas de ingeniería",
-          items: ["Git", "Linux", "CI (GitHub Actions)", "Tests automatizados"],
+          label: "Producción",
+          items: ["Pipelines", "Datamarts", "R Shiny", "Docker", "AWS", "GCP", "Git", "CI"],
         },
         {
-          label: "Trabajo asistido por IA",
-          items: ["Claude Code", "Codex", "LLM locales (Ollama, MLX)"],
+          label: "Agentes de IA",
+          items: [
+            "Claude API",
+            "Claude Code",
+            "Codex",
+            "MCP",
+            "Skills de agente",
+            "LLM locales (Ollama, MLX)",
+          ],
         },
       ],
       spokenLanguages: ["Francés: lengua materna", "Inglés: fluido", "Español: intermedio"],

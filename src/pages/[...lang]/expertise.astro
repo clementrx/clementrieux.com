@@ -3,7 +3,7 @@ import { render } from "astro:content";
 import Base from "@/layouts/Base.astro";
 import { ui } from "@/i18n/ui";
 import { langFromParam, langStaticPaths } from "@/i18n/utils";
-import { domainsFor } from "@/lib/content";
+import { certifications, domainsFor } from "@/lib/content";
 
 export const getStaticPaths = langStaticPaths;
 
@@ -15,6 +15,9 @@ const domains = await Promise.all(
     Content: (await render(domain.entry)).Content,
   })),
 );
+const certs = await certifications();
+const monthYear = new Intl.DateTimeFormat(lang, { month: "long", year: "numeric" });
+const issuedOn = (issued: string) => monthYear.format(new Date(`${issued}-01T12:00:00Z`));
 ---
 
 <Base
@@ -35,6 +38,45 @@ const domains = await Promise.all(
           <p>{entry.data.summary}</p>
         </div>
         <Content />
+
+        {entry.data.skills && (
+          <>
+            <h3>{t.expertise.toolbox}</h3>
+            <dl class="toolbox">
+              {entry.data.skills.map((group) => (
+                <div>
+                  <dt>{group.label}</dt>
+                  <dd>
+                    <ul class="chips">
+                      {group.items.map((item) => (
+                        <li>{item}</li>
+                      ))}
+                    </ul>
+                  </dd>
+                </div>
+              ))}
+            </dl>
+          </>
+        )}
+
+        {entry.data.showCertifications && (
+          <>
+            <h3>{t.expertise.certificationsTitle}</h3>
+            <ul class="certs">
+              {certs.map(({ data }) => (
+                <li>
+                  <span class="cert-name">{data.name}</span>
+                  <span class="cert-meta">
+                    {data.issuer} · {issuedOn(data.issued)}
+                  </span>
+                  <a href={data.url} aria-label={`${t.expertise.verify}: ${data.name}`}>
+                    {t.expertise.verify}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </>
+        )}
       </section>
     ))}
   </div>
@@ -66,5 +108,68 @@ const domains = await Promise.all(
 
   .domain :global(li) {
     margin-bottom: var(--space-2);
+  }
+
+  .toolbox div {
+    padding-block: var(--space-2);
+  }
+
+  .toolbox dt {
+    font-weight: 600;
+    margin-bottom: var(--space-1);
+  }
+
+  .toolbox dd {
+    margin: 0;
+  }
+
+  .chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .domain .chips li {
+    margin: 0;
+    padding: 0.125rem var(--space-2);
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    background: var(--surface);
+    font-family: var(--font-mono);
+    font-size: 0.8125rem;
+  }
+
+  .certs {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .domain .certs li {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 0 var(--space-3);
+    padding-block: var(--space-2);
+    margin: 0;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .cert-name {
+    font-weight: 600;
+  }
+
+  .cert-meta {
+    grid-column: 1;
+    color: var(--muted);
+    font-size: 0.9375rem;
+  }
+
+  .certs a {
+    grid-column: 2;
+    grid-row: 1 / span 2;
+    align-self: center;
   }
 </style>

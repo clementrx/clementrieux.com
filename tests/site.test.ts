@@ -119,7 +119,7 @@ describe("whole site", () => {
   });
 
   it.each(LANGS)("shows the four expertise domains in %s, linked from the home page", (lang) => {
-    const domains = ["data-science", "quant", "sport", "llm"];
+    const domains = ["data-science", "ai-agents", "approach", "sport"];
     const expertise = loadPage(pageUrl(lang, "expertise/"));
     const home = loadPage(pageUrl(lang, ""));
     for (const id of domains) {
@@ -128,6 +128,27 @@ describe("whole site", () => {
       expect(home.one(`a[href="${href}"]`), href).toBeDefined();
     }
   });
+
+  it.each(LANGS)(
+    "lists the seven Anthropic certifications with verification links in %s",
+    (lang) => {
+      const ids = [
+        "8qy3ds9e39qk",
+        "px4njcrs2gij",
+        "bu3xjzruuy4d",
+        "8syytqyvtryq",
+        "qapdws4hki5p",
+        "o8oj3vdk7iho",
+        "v8uknfj2pkzp",
+      ];
+      const expertise = loadPage(pageUrl(lang, "expertise/"));
+      for (const id of ids) {
+        const link = expertise.one(`#ai-agents a[href="https://verify.skilljar.com/c/${id}"]`);
+        expect(link, id).toBeDefined();
+        expect(attr(link, "aria-label"), id).toBeTruthy();
+      }
+    },
+  );
 
   it("serves a 404 page in all three languages", () => {
     const doc = loadPage("/404.html");
