@@ -43,6 +43,22 @@ La previsión está en el centro de mi trabajo. Me ocupo de lo que hace difícil
 - **Aprendizaje por refuerzo**: decisiones secuenciales en las que un agente aprende de las consecuencias de sus acciones.
 - **Econometría y finanzas**: preguntas causales, datos de panel, datos de mercado. Backtests sin fugas temporales, con los costes modelizados y un periodo fuera de muestra intacto hasta el final.
 
+### Caso práctico: predecir carreras de caballos
+
+Un proyecto personal que mantengo en producción desde 2020. Cada mañana, un sistema estima para cada caballo de cada carrera francesa su probabilidad de ganar o de terminar entre los primeros, para ayudar a elegir las apuestas. Es un terreno exigente: seis disciplinas con reglas distintas (trote enganchado y montado, liso, vallas, steeple, cross), datos incompletos y un mercado de apuestas muy eficiente.
+
+- **Datos**: recogida automática diaria en PostgreSQL, unos 4,7 millones de filas (un caballo en una carrera) desde 2019.
+- **Limpieza**: eliminación de los no participantes, tratamiento de una treintena de códigos de abandono y descalificación, imputaciones que solo miran al pasado, carreras extranjeras usadas para los historiales pero no para el entrenamiento.
+- **Variables**: 722 features en trece familias (caballo, jinete, entrenador, carrera, clasificaciones Elo…), todas calculadas con la información disponible antes de la salida. Ninguna cuota entre ellas, para que el modelo sea independiente del mercado.
+- **Selección**: una selección por disciplina y por objetivo, en dos pasos: preselección según la importancia en un modelo LightGBM y después una prueba de estabilidad sobre cinco remuestreos por bloques. Una variable solo se conserva si aparece en al menos el 60 % de ellos.
+- **Modelos**: 28 modelos de gradient boosting (7 segmentos × 4 objetivos: ganador, top 2, top 3, top 4), promediados sobre varias semillas, con probabilidades calibradas, intervalos conformes y detección de casos fuera de distribución.
+- **Validación**: divisiones temporales, al menos tres semillas antes de anunciar una mejora, resultados por disciplina y nunca como media global, repetición sobre un periodo distinto y tests automáticos que bloquean cualquier fuga de información futura.
+- **Producción**: un solo comando, cada mañana, encadena la sincronización de los datos, los controles de seguridad, el cálculo de variables, las predicciones y una página de resultados legible en el móvil. Una nueva versión solo entra en servicio tras una comparación automática con la que está en marcha.
+
+**Stack**: Python, Polars, NumPy, scikit-learn, LightGBM, CatBoost, PostgreSQL, Parquet, pandera, Streamlit, pytest.
+
+**Lo que aprendí**: la mayoría de las ideas atractivas no sobreviven a una prueba honesta. De 556 combinaciones de apuestas que parecían rentables con los datos históricos, ninguna resistió al repetirlas sobre otro periodo. Saber medirlo, y dejarlo por escrito, forma parte del trabajo.
+
 ### Del notebook a producción
 
 - **Pipelines de producción** programados, probados, supervisados y reproducibles.

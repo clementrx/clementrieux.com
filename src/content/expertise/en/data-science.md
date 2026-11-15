@@ -43,6 +43,22 @@ Forecasting is at the heart of my work. I deal with what makes real-world series
 - **Reinforcement learning**: sequential decisions where an agent learns from the consequences of its actions.
 - **Econometrics and finance**: causal questions, panel data, market data. Backtests without look-ahead, with costs modelled and an out-of-sample period kept untouched until the end.
 
+### Case study: predicting horse races
+
+A personal project I have been running in production since 2020. Every morning, a system estimates, for every horse in every French race, its probability of winning or finishing near the front, to help choose which bets to place. It is a demanding field: six disciplines with different rules (harness and mounted trotting, flat, hurdles, steeplechase, cross-country), incomplete data and a very efficient betting market.
+
+- **Data**: automated daily collection into PostgreSQL, about 4.7 million rows (one horse in one race) since 2019.
+- **Cleaning**: non-runners removed, some thirty codes for falls, pull-ups and disqualifications handled, imputations that only look backwards, foreign races used for historical records but not for training.
+- **Features**: 722 variables in thirteen families (horse, jockey, trainer, race, Elo ratings…), all computed from information available before the start. No odds among them, so the model stays independent of the market.
+- **Selection**: one selection per discipline and per target, in two steps: a shortlist based on LightGBM importance, then a stability test over five block bootstrap resamples. A variable is kept only if it comes out in at least 60% of them.
+- **Models**: 28 gradient boosting models (7 segments × 4 targets: winner, top 2, top 3, top 4), averaged over several seeds, with calibrated probabilities, conformal intervals and out-of-distribution detection.
+- **Validation**: time-based splits, at least three seeds before claiming a gain, results per discipline and never as a global average, replay on a disjoint period, and automated tests that block any leak of future information.
+- **Production**: a single command each morning chains data sync, safety checks, feature computation, predictions and a results page readable on a phone. A new version goes live only after an automatic comparison with the one in service.
+
+**Stack**: Python, Polars, NumPy, scikit-learn, LightGBM, CatBoost, PostgreSQL, Parquet, pandera, Streamlit, pytest.
+
+**What I take from it**: most attractive ideas do not survive an honest test. Out of 556 bet combinations that looked profitable on historical data, none held up when replayed on a different period. Being able to measure that, and to write it down, is part of the job.
+
 ### From notebook to production
 
 - **Production pipelines** that are scheduled, tested, monitored and reproducible.

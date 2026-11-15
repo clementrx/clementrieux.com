@@ -43,6 +43,22 @@ La prévision est au cœur de mon travail. Je traite ce qui rend les séries ré
 - **Apprentissage par renforcement** : décisions séquentielles où un agent apprend des conséquences de ses actions.
 - **Économétrie et finance** : questions causales, données de panel, données de marché. Des backtests sans fuite temporelle, avec les coûts modélisés et une période hors échantillon gardée intacte jusqu'à la fin.
 
+### Cas concret : prédire les courses hippiques
+
+Un projet personnel que je fais tourner en production depuis 2020. Chaque matin, un système estime pour chaque cheval de chaque course française sa probabilité de gagner ou de finir dans les premiers, afin d'aider à choisir ses paris. Le terrain est exigeant : six disciplines aux règles différentes (trot attelé et monté, plat, haies, steeple, cross), des données incomplètes et un marché des paris très efficace.
+
+- **Données** : une collecte automatique quotidienne vers PostgreSQL, environ 4,7 millions de lignes (un cheval dans une course) depuis 2019.
+- **Nettoyage** : retrait des non-partants, traitement d'une trentaine de codes d'abandon et de disqualification, imputations qui ne regardent que le passé, courses étrangères utilisées pour les historiques mais pas pour l'entraînement.
+- **Variables** : 722 features en treize familles (cheval, jockey, entraîneur, course, classements Elo…), toutes calculées avec l'information disponible avant le départ. Aucune cote parmi elles, pour que le modèle reste indépendant du marché.
+- **Sélection** : une sélection par discipline et par cible, en deux temps : présélection par importance dans un modèle LightGBM, puis test de stabilité sur cinq rééchantillonnages par blocs. Une variable n'est gardée que si elle ressort dans au moins 60 % d'entre eux.
+- **Modèles** : 28 modèles de gradient boosting (7 segments × 4 cibles : gagnant, top 2, top 3, top 4), moyennés sur plusieurs graines, avec des probabilités calibrées, des intervalles conformes et une détection des cas hors distribution.
+- **Validation** : découpage temporel, au moins trois graines avant d'annoncer un gain, résultats par discipline et jamais en moyenne globale, rejeu sur une période disjointe, et des tests automatiques qui bloquent toute fuite d'information future.
+- **Production** : une seule commande, chaque matin, enchaîne la synchronisation des données, les contrôles de sécurité, le calcul des variables, les prédictions et une page de résultats lisible sur mobile. Une nouvelle version n'est mise en service qu'après une comparaison automatique avec celle en place.
+
+**Stack** : Python, Polars, NumPy, scikit-learn, LightGBM, CatBoost, PostgreSQL, Parquet, pandera, Streamlit, pytest.
+
+**Ce que j'en retiens** : la plupart des idées séduisantes ne survivent pas à un test honnête. Sur 556 combinaisons de paris qui semblaient rentables sur l'historique, aucune n'a tenu une fois rejouée sur une autre période. Savoir le mesurer, et l'écrire, fait partie du travail.
+
 ### Du notebook à la production
 
 - **Pipelines de production** planifiés, testés, surveillés et reproductibles.
