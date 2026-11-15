@@ -42,10 +42,20 @@ Los modelos que uso, elegidos según el problema y no por costumbre:
 - **Modelos probabilísticos de clasificación**: Plackett-Luce y Harville para pasar de puntuaciones a probabilidades de orden de llegada, puntuaciones Elo y TrueSkill.
 - **Ajuste e interpretación**: Optuna para los hiperparámetros, SHAP para explicar las predicciones.
 
+### NLP y RAG
+
+Aprovechar el texto, desde correos electrónicos hasta PDF y artículos científicos:
+
+- **Tratamiento de texto**: clasificación de textos, extracción de información, tratamiento automático de correos electrónicos.
+- **RAG**: asistentes que responden a partir de una base documental (PDF, artículos) y citan sus fuentes.
+- **Ingesta**: extracción, limpieza, segmentación semántica (chunking), enriquecimiento de metadatos y cálculo de embeddings.
+- **Búsqueda**: búsqueda semántica e híbrida que combina embeddings y palabras clave, seguida de un reranking de los pasajes más relevantes.
+- **Evaluación**: pertinencia de la búsqueda, fidelidad de las respuestas a los documentos (faithfulness) y calidad de las respuestas.
+- **Herramientas**: [LangChain](https://github.com/langchain-ai/langchain), los embeddings [BGE-M3](https://huggingface.co/BAAI/bge-m3) y la base vectorial [Qdrant](https://github.com/qdrant/qdrant).
+
 ### Otras áreas de modelización
 
 - **Clasificación y scoring**: probabilidades calibradas, métricas elegidas según el coste real de cada tipo de error.
-- **NLP y RAG**: clasificación de textos, extracción de información, asistentes que consultan bases documentales (PDF, artículos), con segmentación semántica, embeddings, búsqueda híbrida, reranking y evaluación de la fidelidad de las respuestas, construidos con [LangChain](https://github.com/langchain-ai/langchain), los embeddings [BGE-M3](https://huggingface.co/BAAI/bge-m3) y la base vectorial [Qdrant](https://github.com/qdrant/qdrant).
 - **Aprendizaje por refuerzo**: decisiones secuenciales en las que un agente aprende de las consecuencias de sus acciones.
 - **Econometría y finanzas**: preguntas causales, datos de panel, datos de mercado. Backtests sin fugas temporales, con los costes modelizados y un periodo fuera de muestra intacto hasta el final.
 

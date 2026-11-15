@@ -42,10 +42,20 @@ Les modèles que j'utilise, choisis selon le problème plutôt que par habitude�
 - **Modèles de classement probabilistes** : Plackett-Luce et Harville pour passer de scores à des probabilités d'ordre d'arrivée, notations Elo et TrueSkill.
 - **Réglage et interprétation** : Optuna pour les hyperparamètres, SHAP pour expliquer les prédictions.
 
+### NLP et RAG
+
+Exploiter le texte, des e-mails aux PDF et aux articles scientifiques :
+
+- **Traitement du texte** : classification de textes, extraction d'informations, traitement automatique des e-mails.
+- **RAG** : des assistants qui répondent à partir d'une base documentaire (PDF, articles) et citent leurs sources.
+- **Ingestion** : extraction, nettoyage, découpage sémantique (chunking), enrichissement des métadonnées et calcul des embeddings.
+- **Recherche** : recherche sémantique et hybride, qui combine embeddings et mots-clés, puis reranking des passages les plus pertinents.
+- **Évaluation** : pertinence de la recherche, fidélité des réponses aux documents (faithfulness) et qualité des réponses.
+- **Outils** : [LangChain](https://github.com/langchain-ai/langchain), les embeddings [BGE-M3](https://huggingface.co/BAAI/bge-m3) et la base vectorielle [Qdrant](https://github.com/qdrant/qdrant).
+
 ### Autres domaines de modélisation
 
 - **Classification et scoring** : probabilités calibrées, métriques choisies selon le coût réel de chaque type d'erreur.
-- **NLP et RAG** : classification de textes, extraction d'informations, assistants qui interrogent des bases documentaires (PDF, articles), avec découpage sémantique, embeddings, recherche hybride, reranking et évaluation de la fidélité des réponses, construits avec [LangChain](https://github.com/langchain-ai/langchain), les embeddings [BGE-M3](https://huggingface.co/BAAI/bge-m3) et la base vectorielle [Qdrant](https://github.com/qdrant/qdrant).
 - **Apprentissage par renforcement** : décisions séquentielles où un agent apprend des conséquences de ses actions.
 - **Économétrie et finance** : questions causales, données de panel, données de marché. Des backtests sans fuite temporelle, avec les coûts modélisés et une période hors échantillon gardée intacte jusqu'à la fin.
 
