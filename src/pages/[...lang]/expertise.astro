@@ -1,0 +1,70 @@
+---
+import { render } from "astro:content";
+import Base from "@/layouts/Base.astro";
+import { ui } from "@/i18n/ui";
+import { langFromParam, langStaticPaths } from "@/i18n/utils";
+import { domainsFor } from "@/lib/content";
+
+export const getStaticPaths = langStaticPaths;
+
+const lang = langFromParam(Astro.params.lang);
+const t = ui[lang];
+const domains = await Promise.all(
+  (await domainsFor(lang)).map(async (domain) => ({
+    ...domain,
+    Content: (await render(domain.entry)).Content,
+  })),
+);
+---
+
+<Base
+  lang={lang}
+  page="expertise"
+  title={t.meta.expertise.title}
+  description={t.meta.expertise.description}
+>
+  <div class="container prose">
+    <h1>{t.expertise.title}</h1>
+    <p class="lead">{t.expertise.intro}</p>
+
+    {domains.map(({ slug, entry, Content }) => (
+      <section id={slug} aria-labelledby={`${slug}-title`} class="domain">
+        <h2 id={`${slug}-title`}>{entry.data.title}</h2>
+        <div class="summary">
+          <p class="eyebrow">{t.expertise.inShort}</p>
+          <p>{entry.data.summary}</p>
+        </div>
+        <Content />
+      </section>
+    ))}
+  </div>
+</Base>
+
+<style>
+  .domain {
+    scroll-margin-top: var(--space-4);
+    padding-top: var(--space-3);
+    border-top: 1px solid var(--border);
+    margin-top: var(--space-5);
+  }
+
+  .domain h2 {
+    margin-top: 0;
+  }
+
+  .summary {
+    padding: var(--space-3) var(--space-4);
+    background: var(--surface);
+    border-left: 4px solid var(--accent);
+    border-radius: var(--radius);
+    margin-bottom: var(--space-4);
+  }
+
+  .summary p:last-child {
+    margin-bottom: 0;
+  }
+
+  .domain :global(li) {
+    margin-bottom: var(--space-2);
+  }
+</style>
