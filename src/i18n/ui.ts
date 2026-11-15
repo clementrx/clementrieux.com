@@ -162,7 +162,19 @@ export const ui = {
         },
         {
           label: "Production",
-          items: ["Pipelines", "Datamarts", "R Shiny", "Docker", "AWS", "GCP", "Git", "CI"],
+          items: [
+            "Pipelines",
+            "Datamarts",
+            "GCP",
+            "AWS",
+            "Docker",
+            "Linux",
+            "Git",
+            "CI",
+            "R Shiny",
+            "Dash",
+            "Streamlit",
+          ],
         },
         {
           label: "AI agents",
@@ -281,7 +293,19 @@ export const ui = {
         },
         {
           label: "Production",
-          items: ["Pipelines", "Datamarts", "R Shiny", "Docker", "AWS", "GCP", "Git", "CI"],
+          items: [
+            "Pipelines",
+            "Datamarts",
+            "GCP",
+            "AWS",
+            "Docker",
+            "Linux",
+            "Git",
+            "CI",
+            "R Shiny",
+            "Dash",
+            "Streamlit",
+          ],
         },
         {
           label: "Agents IA",
@@ -404,7 +428,19 @@ export const ui = {
         },
         {
           label: "Producción",
-          items: ["Pipelines", "Datamarts", "R Shiny", "Docker", "AWS", "GCP", "Git", "CI"],
+          items: [
+            "Pipelines",
+            "Datamarts",
+            "GCP",
+            "AWS",
+            "Docker",
+            "Linux",
+            "Git",
+            "CI",
+            "R Shiny",
+            "Dash",
+            "Streamlit",
+          ],
         },
         {
           label: "Agentes de IA",

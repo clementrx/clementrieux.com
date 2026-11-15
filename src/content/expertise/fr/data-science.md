@@ -17,7 +17,9 @@ skills:
   - label: "Plateformes de données"
     items: ["Oracle", "Hive", "PySpark", "PostgreSQL"]
   - label: "Déploiement"
-    items: ["Docker", "AWS", "GCP", "Git", "CI", "R Shiny"]
+    items: ["GCP", "AWS", "Docker", "Linux", "Git", "CI"]
+  - label: "Applications"
+    items: ["R Shiny", "Dash", "Streamlit"]
   - label: "Fondamentaux"
     items: ["Mathématiques", "Statistiques", "Économétrie", "Informatique", "Finance"]
 ---
@@ -70,16 +72,16 @@ Avant tout modèle, comprendre les données et ce qu'elles racontent :
 - **Interprétation** : relier chaque constat à son contexte et le restituer clairement, pour que l'analyse serve une décision.
 - **Préparation pour la modélisation** : feature engineering à partir de l'historique et du contexte, sélection de variables stable, toujours limitée à l'information disponible au moment de la décision.
 
-### Du notebook à la production
+### Déploiement
 
-- **Pipelines de production** planifiés, testés, surveillés et reproductibles.
-- **Chaînes de bout en bout** : collecte, contrôles, calcul des variables, prédictions et restitution, enchaînés automatiquement chaque jour. Une nouvelle version n'est mise en service qu'après comparaison avec celle en place.
-- **Datamarts** : conception et construction de tables d'analyse que les équipes métier interrogent en autonomie.
-- **Applications** R Shiny et Python qui mettent les modèles entre les mains de personnes qui ne codent pas.
-- **Conception logicielle** : un code lisible, typé et testé, qu'un collègue peut maintenir sans moi.
+- **Cloud** : mise en production sur GCP et AWS.
+- **Serveurs** : déploiement sur serveur Linux, conteneurisé avec Docker.
+- **Pipelines** : traitements planifiés et automatisés, intégration continue.
+- **Datamarts** : tables d'analyse prêtes à l'emploi pour les équipes métier.
 
-### Comment je valide
+### Applications
 
-- Des découpages apprentissage / test qui respectent le temps : aucune information future ne fuit dans l'entraînement.
-- Une référence simple d'abord ; un modèle complexe n'est gardé que s'il la bat nettement.
-- Chaque chiffre que j'annonce vient avec la commande qui l'a produit, y compris quand le résultat déçoit.
+Des applications web qui mettent modèles et analyses entre les mains de personnes qui ne codent pas :
+
+- **R Shiny** en R.
+- **Dash** et **Streamlit** en Python.

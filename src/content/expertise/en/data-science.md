@@ -17,7 +17,9 @@ skills:
   - label: "Data platforms"
     items: ["Oracle", "Hive", "PySpark", "PostgreSQL"]
   - label: "Deployment"
-    items: ["Docker", "AWS", "GCP", "Git", "CI", "R Shiny"]
+    items: ["GCP", "AWS", "Docker", "Linux", "Git", "CI"]
+  - label: "Applications"
+    items: ["R Shiny", "Dash", "Streamlit"]
   - label: "Foundations"
     items: ["Mathematics", "Statistics", "Econometrics", "Computer science", "Finance"]
 ---
@@ -70,16 +72,16 @@ Before any model, understanding the data and what it says:
 - **Interpretation**: linking each finding to its context and reporting it clearly, so that the analysis supports a decision.
 - **Preparing for modelling**: feature engineering from history and context, stable feature selection, always limited to the information available at decision time.
 
-### From notebook to production
+### Deployment
 
-- **Production pipelines** that are scheduled, tested, monitored and reproducible.
-- **End-to-end pipelines**: collection, checks, feature computation, predictions and reporting, chained automatically every day. A new version goes live only after a comparison with the one in service.
-- **Datamarts**: designing and building analytical tables that business teams can query on their own.
-- **Applications** in R Shiny and Python that put models in the hands of people who do not code.
-- **Software design**: readable, typed and tested code that a colleague can maintain without me.
+- **Cloud**: putting models into production on GCP and AWS.
+- **Servers**: deployment on Linux servers, containerised with Docker.
+- **Pipelines**: scheduled, automated processing and continuous integration.
+- **Datamarts**: ready-to-use analytical tables for business teams.
 
-### How I validate
+### Applications
 
-- Train and test splits that respect time, so no future information leaks into training.
-- A simple baseline first; a complex model is kept only if it clearly beats it.
-- Every number I report comes with the command that produced it, including when the result is disappointing.
+Web applications that put models and analyses in the hands of people who do not code:
+
+- **R Shiny** in R.
+- **Dash** and **Streamlit** in Python.

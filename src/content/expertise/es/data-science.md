@@ -17,7 +17,9 @@ skills:
   - label: "Plataformas de datos"
     items: ["Oracle", "Hive", "PySpark", "PostgreSQL"]
   - label: "Despliegue"
-    items: ["Docker", "AWS", "GCP", "Git", "CI", "R Shiny"]
+    items: ["GCP", "AWS", "Docker", "Linux", "Git", "CI"]
+  - label: "Aplicaciones"
+    items: ["R Shiny", "Dash", "Streamlit"]
   - label: "Fundamentos"
     items: ["Matemáticas", "Estadística", "Econometría", "Informática", "Finanzas"]
 ---
@@ -70,16 +72,16 @@ Antes de cualquier modelo, entender los datos y lo que cuentan:
 - **Interpretación**: relacionar cada hallazgo con su contexto y comunicarlo con claridad, para que el análisis sirva a una decisión.
 - **Preparación para la modelización**: feature engineering a partir del historial y del contexto, selección de variables estable, siempre limitada a la información disponible en el momento de la decisión.
 
-### Del notebook a producción
+### Despliegue
 
-- **Pipelines de producción** programados, probados, supervisados y reproducibles.
-- **Cadenas de extremo a extremo**: recogida, controles, cálculo de variables, predicciones y presentación de resultados, encadenados automáticamente cada día. Una nueva versión solo entra en servicio tras compararla con la que está en marcha.
-- **Datamarts**: diseño y construcción de tablas analíticas que los equipos de negocio consultan de forma autónoma.
-- **Aplicaciones** en R Shiny y Python que ponen los modelos en manos de personas que no programan.
-- **Diseño de software**: código legible, tipado y probado, que un compañero puede mantener sin mí.
+- **Cloud**: puesta en producción en GCP y AWS.
+- **Servidores**: despliegue en servidores Linux, en contenedores Docker.
+- **Pipelines**: procesos programados y automatizados, integración continua.
+- **Datamarts**: tablas analíticas listas para usar por los equipos de negocio.
 
-### Cómo valido
+### Aplicaciones
 
-- Divisiones entre entrenamiento y test que respetan el tiempo: ninguna información futura se filtra en el entrenamiento.
-- Primero una referencia sencilla; un modelo complejo solo se conserva si la supera con claridad.
-- Cada cifra que presento va acompañada del comando que la produjo, también cuando el resultado decepciona.
+Aplicaciones web que ponen modelos y análisis en manos de personas que no programan:
+
+- **R Shiny** en R.
+- **Dash** y **Streamlit** en Python.
