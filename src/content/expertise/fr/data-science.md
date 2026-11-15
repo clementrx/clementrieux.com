@@ -40,6 +40,7 @@ Les modèles que j'utilise, choisis selon le problème plutôt que par habitude�
 - **Deep learning** : réseaux denses (MLP), TabNet, réseaux récurrents (RNN, LSTM), Transformers et mécanismes d'attention, embeddings d'entités, et CNN pour la vision par ordinateur (classification, détection d'objets, segmentation).
 - **Learning to rank** : LambdaRank, YetiRank et XGBRanker, quand il faut ordonner des candidats entre eux plutôt que les juger un par un.
 - **Modèles de classement probabilistes** : Plackett-Luce et Harville pour passer de scores à des probabilités d'ordre d'arrivée, notations Elo et TrueSkill.
+- **Probabilités fiables** : calibration (isotonique, bêta), intervalles conformes (MAPIE) et détection des cas hors distribution.
 - **Réglage et interprétation** : Optuna pour les hyperparamètres, SHAP pour expliquer les prédictions.
 
 ### NLP et RAG
@@ -59,12 +60,15 @@ Exploiter le texte, des e-mails aux PDF et aux articles scientifiques :
 - **Apprentissage par renforcement** : décisions séquentielles où un agent apprend des conséquences de ses actions.
 - **Économétrie et finance** : questions causales, données de panel, données de marché. Des backtests sans fuite temporelle, avec les coûts modélisés et une période hors échantillon gardée intacte jusqu'à la fin.
 
-### De la donnée brute au modèle
+### Exploration et préparation des données
 
-- **Nettoyage** : données incomplètes ou hétérogènes, cas particuliers métier, valeurs manquantes imputées sans jamais utiliser d'information future.
-- **Feature engineering** : variables construites à partir de l'historique, agrégations temporelles, classements de type Elo, toujours limitées à l'information disponible au moment de la décision.
-- **Sélection de variables** : importance dans les modèles et tests de stabilité par rééchantillonnage, pour garder ce qui tient et écarter ce qui relève du hasard.
-- **Probabilités fiables** : calibration (isotonique, bêta), intervalles conformes (MAPIE) et détection des cas hors distribution.
+Avant tout modèle, comprendre les données et ce qu'elles racontent :
+
+- **Compréhension du métier** : d'où viennent les données, comment elles sont produites et ce que les équipes en attendent, en échangeant avec ceux qui les connaissent le mieux.
+- **Analyse exploratoire (EDA)** : distributions, valeurs manquantes, corrélations, ruptures et anomalies, avec des visualisations qui font apparaître les problèmes avant qu'ils ne faussent un modèle.
+- **Nettoyage** : données incomplètes ou hétérogènes, doublons, cas particuliers métier, valeurs manquantes imputées sans utiliser d'information future.
+- **Interprétation** : relier chaque constat à son contexte et le restituer clairement, pour que l'analyse serve une décision.
+- **Préparation pour la modélisation** : feature engineering à partir de l'historique et du contexte, sélection de variables stable, toujours limitée à l'information disponible au moment de la décision.
 
 ### Du notebook à la production
 

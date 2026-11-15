@@ -40,6 +40,7 @@ The models I use, chosen for the problem rather than out of habit:
 - **Deep learning**: dense networks (MLP), TabNet, recurrent networks (RNN, LSTM), Transformers and attention, entity embeddings, and CNNs for computer vision (classification, object detection, segmentation).
 - **Learning to rank**: LambdaRank, YetiRank and XGBRanker, when candidates must be ordered against each other rather than judged one by one.
 - **Probabilistic ranking models**: Plackett-Luce and Harville to turn scores into finishing-order probabilities, Elo and TrueSkill ratings.
+- **Reliable probabilities**: calibration (isotonic, beta), conformal intervals (MAPIE) and out-of-distribution detection.
 - **Tuning and interpretation**: Optuna for hyperparameters, SHAP to explain predictions.
 
 ### NLP and RAG
@@ -59,12 +60,15 @@ Making use of text, from emails to PDFs and scientific articles:
 - **Reinforcement learning**: sequential decisions where an agent learns from the consequences of its actions.
 - **Econometrics and finance**: causal questions, panel data, market data. Backtests without look-ahead, with costs modelled and an out-of-sample period kept untouched until the end.
 
-### From raw data to model
+### Data exploration and preparation
 
-- **Cleaning**: incomplete or heterogeneous data, domain-specific edge cases, missing values imputed without ever using future information.
-- **Feature engineering**: variables built from historical records, time-based aggregates, Elo-style ratings, always limited to the information available at decision time.
-- **Feature selection**: model importance and resampling stability tests, to keep what holds and drop what is noise.
-- **Reliable probabilities**: calibration (isotonic, beta), conformal intervals (MAPIE) and out-of-distribution detection.
+Before any model, understanding the data and what it says:
+
+- **Understanding the business**: where the data comes from, how it is produced and what teams expect from it, by talking to the people who know it best.
+- **Exploratory data analysis (EDA)**: distributions, missing values, correlations, breaks and anomalies, with visualisations that expose problems before they distort a model.
+- **Cleaning**: incomplete or heterogeneous data, duplicates, domain-specific edge cases, missing values imputed without using future information.
+- **Interpretation**: linking each finding to its context and reporting it clearly, so that the analysis supports a decision.
+- **Preparing for modelling**: feature engineering from history and context, stable feature selection, always limited to the information available at decision time.
 
 ### From notebook to production
 

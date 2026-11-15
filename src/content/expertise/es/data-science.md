@@ -40,6 +40,7 @@ Los modelos que uso, elegidos según el problema y no por costumbre:
 - **Deep learning**: redes densas (MLP), TabNet, redes recurrentes (RNN, LSTM), Transformers y mecanismos de atención, embeddings de entidades, y CNN para visión por computadora (clasificación, detección de objetos, segmentación).
 - **Learning to rank**: LambdaRank, YetiRank y XGBRanker, cuando hay que ordenar candidatos entre sí en lugar de juzgarlos uno a uno.
 - **Modelos probabilísticos de clasificación**: Plackett-Luce y Harville para pasar de puntuaciones a probabilidades de orden de llegada, puntuaciones Elo y TrueSkill.
+- **Probabilidades fiables**: calibración (isotónica, beta), intervalos conformes (MAPIE) y detección de casos fuera de distribución.
 - **Ajuste e interpretación**: Optuna para los hiperparámetros, SHAP para explicar las predicciones.
 
 ### NLP y RAG
@@ -59,12 +60,15 @@ Aprovechar el texto, desde correos electrónicos hasta PDF y artículos científ
 - **Aprendizaje por refuerzo**: decisiones secuenciales en las que un agente aprende de las consecuencias de sus acciones.
 - **Econometría y finanzas**: preguntas causales, datos de panel, datos de mercado. Backtests sin fugas temporales, con los costes modelizados y un periodo fuera de muestra intacto hasta el final.
 
-### De los datos brutos al modelo
+### Exploración y preparación de datos
 
-- **Limpieza**: datos incompletos o heterogéneos, casos particulares del negocio, valores ausentes imputados sin usar nunca información futura.
-- **Feature engineering**: variables construidas a partir del historial, agregaciones temporales, clasificaciones tipo Elo, siempre limitadas a la información disponible en el momento de la decisión.
-- **Selección de variables**: importancia en los modelos y pruebas de estabilidad por remuestreo, para conservar lo que se sostiene y descartar lo que es azar.
-- **Probabilidades fiables**: calibración (isotónica, beta), intervalos conformes (MAPIE) y detección de casos fuera de distribución.
+Antes de cualquier modelo, entender los datos y lo que cuentan:
+
+- **Comprensión del negocio**: de dónde vienen los datos, cómo se producen y qué esperan de ellos los equipos, hablando con quienes mejor los conocen.
+- **Análisis exploratorio (EDA)**: distribuciones, valores ausentes, correlaciones, rupturas y anomalías, con visualizaciones que revelan los problemas antes de que distorsionen un modelo.
+- **Limpieza**: datos incompletos o heterogéneos, duplicados, casos particulares del negocio, valores ausentes imputados sin usar información futura.
+- **Interpretación**: relacionar cada hallazgo con su contexto y comunicarlo con claridad, para que el análisis sirva a una decisión.
+- **Preparación para la modelización**: feature engineering a partir del historial y del contexto, selección de variables estable, siempre limitada a la información disponible en el momento de la decisión.
 
 ### Del notebook a producción
 
