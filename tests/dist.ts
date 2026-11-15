@@ -16,6 +16,10 @@ export function readHtml(urlPath: string): string {
   return readFileSync(file, "utf8");
 }
 
+function isElement(node: unknown): node is ElementNode {
+  return (node as ElementNode | undefined)?.type === ELEMENT_NODE;
+}
+
 export interface Page {
   html: string;
   one(selector: string): ElementNode | undefined;
@@ -25,8 +29,6 @@ export interface Page {
 export function loadPage(urlPath: string): Page {
   const html = readHtml(urlPath);
   const doc = parse(html);
-  const isElement = (node: unknown): node is ElementNode =>
-    (node as ElementNode | undefined)?.type === ELEMENT_NODE;
   return {
     html,
     one: (selector) => {

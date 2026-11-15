@@ -1,5 +1,6 @@
 const FRENCH_PHONE = /(?:\+33\s?|\b0)[1-9](?:[\s.-]?\d{2}){4}\b/;
-const STREET = /\b\d{1,4}(?:\s?(?:bis|ter))?,?\s+(?:rue|avenue|boulevard|bd|chemin|allée|impasse|place|route|quai)\b/i;
+const STREET =
+  /\b\d{1,4}(?:\s?(?:bis|ter))?,?\s+(?:rue|avenue|boulevard|bd|chemin|allée|impasse|place|route|quai)\b/i;
 const POSTCODE_CITY = /\b\d{5}\s+[A-ZÉÈ][a-zéèêàç]+/;
 const NUMERIC_DATE = /\b(?:0?[1-9]|[12]\d|3[01])[/.-](?:0?[1-9]|1[0-2])[/.-](?:19|20)\d{2}\b/;
 const BIRTH_WORDS = /\b(?:né le|née le|born on|date de naissance|fecha de nacimiento)\b/i;
