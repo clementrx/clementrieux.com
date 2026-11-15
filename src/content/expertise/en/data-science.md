@@ -59,6 +59,15 @@ A personal project I have been running in production since 2020. Every morning, 
 
 **What I take from it**: most attractive ideas do not survive an honest test. Out of 556 bet combinations that looked profitable on historical data, none held up when replayed on a different period. Being able to measure that, and to write it down, is part of the job.
 
+### Case study: a RAG assistant for sports science
+
+An assistant that answers strength and conditioning questions from a specialised document base: coaching courses, training protocols, scientific publications, exercise sheets and training materials. The goal: precise, sourced answers grounded in the literature, rather than the generalities of a language model left to itself.
+
+- **Ingestion**: text extraction from PDFs and articles, cleaning, semantic chunking, metadata enrichment and embedding computation.
+- **Retrieval**: semantic and hybrid search, combining embedding similarity with keyword search, followed by reranking of the most relevant passages.
+- **Generation**: an LLM writes the answer from the retrieved passages and cites its sources.
+- **Evaluation**: retrieval relevance, the gain from reranking, faithfulness of answers to the documents and overall answer quality, measured to guide every optimisation.
+
 ### From notebook to production
 
 - **Production pipelines** that are scheduled, tested, monitored and reproducible.

@@ -59,6 +59,15 @@ Un projet personnel que je fais tourner en production depuis 2020. Chaque matin,
 
 **Ce que j'en retiens** : la plupart des idées séduisantes ne survivent pas à un test honnête. Sur 556 combinaisons de paris qui semblaient rentables sur l'historique, aucune n'a tenu une fois rejouée sur une autre période. Savoir le mesurer, et l'écrire, fait partie du travail.
 
+### Cas concret : un assistant RAG en sciences du sport
+
+Un assistant qui répond aux questions de préparation physique en s'appuyant sur une base documentaire spécialisée : cours de préparation physique, protocoles d'entraînement, publications scientifiques, fiches d'exercices et documents de formation. L'objectif : des réponses précises et sourcées, fondées sur la littérature, plutôt que les généralités d'un modèle de langage laissé à lui-même.
+
+- **Ingestion** : extraction du texte des PDF et des articles, nettoyage, découpage sémantique (chunking), enrichissement des métadonnées et calcul des embeddings.
+- **Recherche** : une recherche sémantique et hybride, qui combine la proximité des embeddings et la recherche par mots-clés, suivie d'un reranking des passages les plus pertinents.
+- **Génération** : un LLM rédige la réponse à partir des passages retrouvés et cite ses sources.
+- **Évaluation** : pertinence de la recherche, apport du reranking, fidélité des réponses aux documents (faithfulness) et qualité des réponses, mesurées pour guider chaque optimisation.
+
 ### Du notebook à la production
 
 - **Pipelines de production** planifiés, testés, surveillés et reproductibles.

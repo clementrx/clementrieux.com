@@ -59,6 +59,15 @@ Un proyecto personal que mantengo en producción desde 2020. Cada mañana, un si
 
 **Lo que aprendí**: la mayoría de las ideas atractivas no sobreviven a una prueba honesta. De 556 combinaciones de apuestas que parecían rentables con los datos históricos, ninguna resistió al repetirlas sobre otro periodo. Saber medirlo, y dejarlo por escrito, forma parte del trabajo.
 
+### Caso práctico: un asistente RAG en ciencias del deporte
+
+Un asistente que responde a preguntas de preparación física apoyándose en una base documental especializada: cursos de preparación física, protocolos de entrenamiento, publicaciones científicas, fichas de ejercicios y documentos de formación. El objetivo: respuestas precisas y con fuentes, basadas en la literatura, en lugar de las generalidades de un modelo de lenguaje dejado a su suerte.
+
+- **Ingesta**: extracción del texto de los PDF y artículos, limpieza, segmentación semántica (chunking), enriquecimiento de metadatos y cálculo de embeddings.
+- **Búsqueda**: búsqueda semántica e híbrida, que combina la similitud de los embeddings con la búsqueda por palabras clave, seguida de un reranking de los pasajes más relevantes.
+- **Generación**: un LLM redacta la respuesta a partir de los pasajes recuperados y cita sus fuentes.
+- **Evaluación**: pertinencia de la búsqueda, aporte del reranking, fidelidad de las respuestas a los documentos (faithfulness) y calidad de las respuestas, medidas para guiar cada optimización.
+
 ### Del notebook a producción
 
 - **Pipelines de producción** programados, probados, supervisados y reproducibles.
