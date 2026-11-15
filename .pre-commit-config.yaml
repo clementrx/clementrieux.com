@@ -1,0 +1,29 @@
+repos:
+  - repo: local
+    hooks:
+      - id: format
+        name: oxfmt
+        entry: pnpm format:check
+        language: system
+        pass_filenames: false
+      - id: lint
+        name: oxlint
+        entry: pnpm lint
+        language: system
+        pass_filenames: false
+      - id: astro-check
+        name: astro check
+        entry: pnpm check
+        language: system
+        pass_filenames: false
+        files: \.(astro|ts|mjs|md|yaml)$
+      - id: actionlint
+        name: actionlint
+        entry: actionlint
+        language: system
+        files: ^\.github/workflows/
+      - id: zizmor
+        name: zizmor
+        entry: zizmor
+        language: system
+        files: ^\.github/
