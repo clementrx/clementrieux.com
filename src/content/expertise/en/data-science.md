@@ -6,7 +6,18 @@ skills:
   - label: "Languages"
     items: ["Python", "R", "SQL"]
   - label: "Libraries"
-    items: ["pandas", "Polars", "NumPy", "scikit-learn", "R Shiny"]
+    items:
+      [
+        "pandas",
+        "Polars",
+        "NumPy",
+        "scikit-learn",
+        "Prophet",
+        "Chronos",
+        "AutoGluon",
+        "TimesFM",
+        "R Shiny",
+      ]
   - label: "Data platforms"
     items: ["Oracle", "Hive", "PySpark", "PostgreSQL"]
   - label: "Deployment"
@@ -15,9 +26,17 @@ skills:
     items: ["Mathematics", "Statistics", "Econometrics", "Computer science", "Finance"]
 ---
 
+### Time series
+
+Forecasting is at the heart of my work. I deal with what makes real-world series hard:
+
+- **Trend changes**, **seasonality** and the influence of **external factors**.
+- **Outlier detection**, so that a single abnormal period does not distort the whole model.
+- **Models and frameworks**: [Prophet](https://github.com/meta/prophet), [Chronos](https://github.com/amazon-science/chronos-forecasting), [AutoGluon](https://auto.gluon.ai/stable/index.html) and [TimesFM](https://github.com/google-research/timesfm).
+- **Evaluation**: MAE, MAPE, MSE and RMSE, plus **custom metrics** built around the problem at hand, because over-forecasting and under-forecasting rarely cost the same.
+
 ### Modelling
 
-- **Time series**: forecasting with seasonality, external drivers and uncertainty intervals rather than a single number.
 - **Classification and scoring**: calibrated probabilities, metrics chosen from the real cost of each kind of error.
 - **NLP and RAG**: text classification, information extraction, retrieval-augmented generation over internal documents.
 - **Machine learning and deep learning**: gradient boosting on tabular data, neural networks for computer vision (classification, object detection, segmentation).

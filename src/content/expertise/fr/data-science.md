@@ -6,7 +6,18 @@ skills:
   - label: "Langages"
     items: ["Python", "R", "SQL"]
   - label: "Bibliothèques"
-    items: ["pandas", "Polars", "NumPy", "scikit-learn", "R Shiny"]
+    items:
+      [
+        "pandas",
+        "Polars",
+        "NumPy",
+        "scikit-learn",
+        "Prophet",
+        "Chronos",
+        "AutoGluon",
+        "TimesFM",
+        "R Shiny",
+      ]
   - label: "Plateformes de données"
     items: ["Oracle", "Hive", "PySpark", "PostgreSQL"]
   - label: "Déploiement"
@@ -15,9 +26,17 @@ skills:
     items: ["Mathématiques", "Statistiques", "Économétrie", "Informatique", "Finance"]
 ---
 
+### Séries temporelles
+
+La prévision est au cœur de mon travail. Je traite ce qui rend les séries réelles difficiles :
+
+- **Changements de tendance**, **saisonnalité** et influence des **facteurs externes**.
+- **Détection des valeurs aberrantes**, pour qu'une période anormale ne fausse pas tout le modèle.
+- **Modèles et frameworks** : [Prophet](https://github.com/meta/prophet), [Chronos](https://github.com/amazon-science/chronos-forecasting), [AutoGluon](https://auto.gluon.ai/stable/index.html) et [TimesFM](https://github.com/google-research/timesfm).
+- **Évaluation** : MAE, MAPE, MSE et RMSE, ainsi que des **métriques sur mesure** construites pour la problématique, car surestimer et sous-estimer coûtent rarement la même chose.
+
 ### Modélisation
 
-- **Séries temporelles** : prévisions avec saisonnalité, variables externes et intervalles d'incertitude plutôt qu'un chiffre unique.
 - **Classification et scoring** : probabilités calibrées, métriques choisies selon le coût réel de chaque type d'erreur.
 - **NLP et RAG** : classification de textes, extraction d'informations, génération augmentée par la recherche dans des documents internes.
 - **Machine learning et deep learning** : gradient boosting sur données tabulaires, réseaux de neurones pour la vision par ordinateur (classification, détection d'objets, segmentation).

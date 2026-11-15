@@ -2,7 +2,7 @@ import { defineConfig } from "@playwright/test";
 
 const viewports = { mobile: { width: 375, height: 812 }, desktop: { width: 1280, height: 800 } };
 const schemes = ["light", "dark"] as const;
-const PORT = 4399;
+const PORT = 4398;
 
 export default defineConfig({
   testDir: "tests",
