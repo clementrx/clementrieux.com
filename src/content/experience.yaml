@@ -101,9 +101,9 @@
   org: Toulouse School of Economics
   place: Toulouse
   role:
-    en: Master's degree in Applied Economics (with honours)
-    fr: Master 2 Économie appliquée (mention bien)
-    es: Máster en Economía Aplicada (con mención)
+    en: Master's degree in Applied Economics
+    fr: Master 2 Économie appliquée
+    es: Máster en Economía Aplicada
 
 - id: tse-bachelor
   kind: education
@@ -116,3 +116,15 @@
     en: Bachelor's degree in Economics and Management
     fr: Licence d'économie et gestion
     es: Grado en Economía y Gestión
+
+- id: baccalaureat
+  kind: education
+  order: 3
+  start: 2014
+  end: 2014
+  org: Lycée Jeanne d'Arc
+  place: Argentan
+  role:
+    en: French Baccalaureate, science track
+    fr: Baccalauréat scientifique
+    es: Bachillerato científico francés
