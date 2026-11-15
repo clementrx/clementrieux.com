@@ -119,13 +119,50 @@ describe("whole site", () => {
   });
 
   it.each(LANGS)("shows the four expertise domains in %s, linked from the home page", (lang) => {
-    const domains = ["data-science", "quant", "sport", "llm"];
+    const domains = ["data-science", "ai-agents", "approach", "sport"];
     const expertise = loadPage(pageUrl(lang, "expertise/"));
     const home = loadPage(pageUrl(lang, ""));
     for (const id of domains) {
       expect(expertise.one(`section[id="${id}"] h2`), id).toBeDefined();
       const href = `${pageUrl(lang, "expertise/")}#${id}`;
       expect(home.one(`a[href="${href}"]`), href).toBeDefined();
+    }
+  });
+
+  it.each(LANGS)(
+    "lists the seven Anthropic certifications with verification links in %s",
+    (lang) => {
+      const ids = [
+        "8qy3ds9e39qk",
+        "px4njcrs2gij",
+        "bu3xjzruuy4d",
+        "8syytqyvtryq",
+        "qapdws4hki5p",
+        "o8oj3vdk7iho",
+        "v8uknfj2pkzp",
+      ];
+      const expertise = loadPage(pageUrl(lang, "expertise/"));
+      for (const id of ids) {
+        const link = expertise.one(`#ai-agents a[href="https://verify.skilljar.com/c/${id}"]`);
+        expect(link, id).toBeDefined();
+        expect(attr(link, "aria-label"), id).toBeTruthy();
+      }
+    },
+  );
+
+  it.each(LANGS)("offers an expertise table of contents covering every heading in %s", (lang) => {
+    const page = loadPage(pageUrl(lang, "expertise/"));
+    const toc = page.one("nav[data-toc]");
+    expect(toc, "table of contents").toBeDefined();
+    expect(attr(toc, "aria-label")).toBeTruthy();
+    const targets = [
+      ...page.all("main section[id]").map((section) => attr(section, "id")),
+      ...page.all("h3").map((heading) => attr(heading, "id")),
+    ];
+    expect(targets.length).toBeGreaterThan(8);
+    for (const id of targets) {
+      expect(id, "every section and subsection needs an id").toBeTruthy();
+      expect(page.one(`nav[data-toc] a[href="#${id}"]`), `link to #${id}`).toBeDefined();
     }
   });
 

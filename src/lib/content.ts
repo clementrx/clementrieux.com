@@ -18,3 +18,10 @@ export async function experienceOf(kind: "work" | "education") {
   const entries = await getCollection("experience", (entry) => entry.data.kind === kind);
   return entries.toSorted((a, b) => a.data.order - b.data.order);
 }
+
+export async function certifications() {
+  const entries = await getCollection("certifications");
+  return entries.toSorted(
+    (a, b) => b.data.issued.localeCompare(a.data.issued) || a.data.name.localeCompare(b.data.name),
+  );
+}

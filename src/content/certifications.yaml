@@ -1,0 +1,48 @@
+- id: claude-api
+  name: "Building with the Claude API"
+  issuer: Anthropic
+  issued: "2026-07"
+  credentialId: 8qy3ds9e39qk
+  url: https://verify.skilljar.com/c/8qy3ds9e39qk
+
+- id: claude-platform-101
+  name: "Claude Platform 101"
+  issuer: Anthropic
+  issued: "2026-07"
+  credentialId: o8oj3vdk7iho
+  url: https://verify.skilljar.com/c/o8oj3vdk7iho
+
+- id: claude-code-in-action
+  name: "Claude Code in Action"
+  issuer: Anthropic
+  issued: "2026-04"
+  credentialId: qapdws4hki5p
+  url: https://verify.skilljar.com/c/qapdws4hki5p
+
+- id: claude-code-101
+  name: "Claude Code 101"
+  issuer: Anthropic
+  issued: "2026-04"
+  credentialId: 8syytqyvtryq
+  url: https://verify.skilljar.com/c/8syytqyvtryq
+
+- id: claude-101
+  name: "Claude 101"
+  issuer: Anthropic
+  issued: "2026-04"
+  credentialId: bu3xjzruuy4d
+  url: https://verify.skilljar.com/c/bu3xjzruuy4d
+
+- id: claude-cowork
+  name: "Introduction to Claude Cowork"
+  issuer: Anthropic
+  issued: "2026-04"
+  credentialId: v8uknfj2pkzp
+  url: https://verify.skilljar.com/c/v8uknfj2pkzp
+
+- id: ai-fluency
+  name: "AI Fluency: Framework & Foundations"
+  issuer: Anthropic
+  issued: "2026-04"
+  credentialId: px4njcrs2gij
+  url: https://verify.skilljar.com/c/px4njcrs2gij

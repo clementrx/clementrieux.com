@@ -10,6 +10,8 @@ const expertise = defineCollection({
     title: z.string(),
     summary: z.string(),
     order: z.number().int().positive(),
+    skills: z.array(z.object({ label: z.string(), items: z.array(z.string()).min(1) })).optional(),
+    showCertifications: z.boolean().default(false),
   }),
 });
 
@@ -27,4 +29,15 @@ const experience = defineCollection({
   }),
 });
 
-export const collections = { expertise, experience };
+const certifications = defineCollection({
+  loader: file("src/content/certifications.yaml"),
+  schema: z.object({
+    name: z.string(),
+    issuer: z.string(),
+    issued: z.string().regex(/^\d{4}-\d{2}$/, "Use YYYY-MM"),
+    credentialId: z.string(),
+    url: z.url(),
+  }),
+});
+
+export const collections = { expertise, experience, certifications };
