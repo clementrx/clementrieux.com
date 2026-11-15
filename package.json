@@ -9,8 +9,8 @@
     "check": "astro check",
     "test": "vitest run",
     "test:a11y": "playwright test",
-    "format": "oxfmt",
-    "format:check": "oxfmt --check",
+    "format": "oxfmt --ignore-path=.gitignore --ignore-path=.git/info/exclude",
+    "format:check": "oxfmt --check --ignore-path=.gitignore --ignore-path=.git/info/exclude",
     "images": "node scripts/make-images.mjs",
     "lint": "oxlint"
   },
