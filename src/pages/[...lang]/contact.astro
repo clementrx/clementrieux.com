@@ -1,0 +1,62 @@
+---
+import Base from "@/layouts/Base.astro";
+import { CONTACT, ui } from "@/i18n/ui";
+import { langFromParam, langStaticPaths } from "@/i18n/utils";
+
+export const getStaticPaths = langStaticPaths;
+
+const lang = langFromParam(Astro.params.lang);
+const t = ui[lang];
+const channels = [
+  { label: t.contact.emailLabel, href: `mailto:${CONTACT.email}`, text: CONTACT.email },
+  { label: "LinkedIn", href: CONTACT.linkedin, text: "linkedin.com/in/ClementRieux" },
+  { label: "GitHub", href: CONTACT.github, text: "github.com/clementrx" },
+];
+---
+
+<Base
+  lang={lang}
+  page="contact"
+  title={t.meta.contact.title}
+  description={t.meta.contact.description}
+>
+  <div class="container prose">
+    <h1>{t.contact.title}</h1>
+    <p class="lead">{t.contact.intro}</p>
+    <p>{t.contact.availability}</p>
+    <dl class="channels">
+      {channels.map((channel) => (
+        <div>
+          <dt>{channel.label}</dt>
+          <dd>
+            <a href={channel.href}>{channel.text}</a>
+          </dd>
+        </div>
+      ))}
+    </dl>
+  </div>
+</Base>
+
+<style>
+  .channels {
+    margin-top: var(--space-4);
+  }
+
+  .channels div {
+    display: grid;
+    gap: var(--space-1);
+    padding-block: var(--space-3);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .channels dt {
+    font-family: var(--font-mono);
+    font-size: 0.875rem;
+    color: var(--muted);
+  }
+
+  .channels dd {
+    margin: 0;
+    font-size: 1.125rem;
+  }
+</style>

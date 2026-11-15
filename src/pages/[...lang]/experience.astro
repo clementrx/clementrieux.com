@@ -1,0 +1,122 @@
+---
+import Base from "@/layouts/Base.astro";
+import { ui } from "@/i18n/ui";
+import { langFromParam, langStaticPaths } from "@/i18n/utils";
+import { experienceOf } from "@/lib/content";
+
+export const getStaticPaths = langStaticPaths;
+
+const lang = langFromParam(Astro.params.lang);
+const t = ui[lang];
+const work = await experienceOf("work");
+const education = await experienceOf("education");
+
+const period = (start: number, end: number | null) => {
+  if (end === null) return `${start} – ${t.experience.present}`;
+  return start === end ? `${start}` : `${start} – ${end}`;
+};
+---
+
+<Base
+  lang={lang}
+  page="experience"
+  title={t.meta.experience.title}
+  description={t.meta.experience.description}
+>
+  <div class="container prose">
+    <h1>{t.experience.title}</h1>
+    <p class="lead">{t.experience.intro}</p>
+
+    <h2>{t.experience.work}</h2>
+    <ol class="timeline">
+      {work.map(({ data }) => (
+        <li>
+          <p class="eyebrow">{period(data.start, data.end)}</p>
+          <h3>{data.role[lang]}</h3>
+          <p class="org">{[data.org, data.place].filter(Boolean).join(" · ")}</p>
+          {data.summary && <p>{data.summary[lang]}</p>}
+        </li>
+      ))}
+    </ol>
+
+    <h2>{t.experience.education}</h2>
+    <ol class="timeline">
+      {education.map(({ data }) => (
+        <li>
+          <p class="eyebrow">{period(data.start, data.end)}</p>
+          <h3>{data.role[lang]}</h3>
+          <p class="org">{[data.org, data.place].filter(Boolean).join(" · ")}</p>
+        </li>
+      ))}
+    </ol>
+
+    <h2>{t.experience.skills}</h2>
+    <dl class="skills">
+      {t.experience.skillGroups.map((group) => (
+        <div>
+          <dt>{group.label}</dt>
+          <dd>{group.items.join(" · ")}</dd>
+        </div>
+      ))}
+    </dl>
+
+    <h2>{t.experience.languages}</h2>
+    <ul>
+      {t.experience.spokenLanguages.map((item) => (
+        <li>{item}</li>
+      ))}
+    </ul>
+  </div>
+</Base>
+
+<style>
+  .timeline {
+    list-style: none;
+    margin: 0;
+    padding: 0 0 0 var(--space-4);
+    border-left: 2px solid var(--border);
+  }
+
+  .timeline li {
+    position: relative;
+    padding-bottom: var(--space-4);
+  }
+
+  .timeline li::before {
+    content: "";
+    position: absolute;
+    left: calc(-1 * var(--space-4) - 6px);
+    top: 0.45rem;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--accent);
+  }
+
+  .timeline h3 {
+    margin: 0 0 var(--space-1);
+  }
+
+  .timeline .eyebrow {
+    margin-bottom: var(--space-1);
+  }
+
+  .org {
+    color: var(--muted);
+    margin-bottom: var(--space-2);
+  }
+
+  .skills div {
+    padding-block: var(--space-2);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .skills dt {
+    font-weight: 600;
+  }
+
+  .skills dd {
+    margin: 0;
+    color: var(--muted);
+  }
+</style>
