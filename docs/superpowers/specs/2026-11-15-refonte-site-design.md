@@ -97,8 +97,8 @@ Les textes sont rédigés par Claude dans les trois langues puis relus par Clém
 épinglées sur la dernière version publiée depuis au moins 7 jours. React n'est pas installé tant
 qu'aucune page interactive n'existe.
 
-**i18n** : routage natif d'Astro, `defaultLocale: "en"`, `locales: ["en", "fr", "es"]`,
-`prefixDefaultLocale: false`. Une route dynamique génère les trois versions de chaque page.
+**i18n** : une route dynamique `[...lang]` génère les trois versions de chaque page (anglais à la
+racine). Deux helpers (`src/i18n/utils.ts`) remplacent la config `i18n` d'Astro, inutile ici.
 
 ```
 src/
@@ -120,7 +120,8 @@ public/
                                              vers /experience/, /fr/experience/, /es/experience/
 ```
 
-`sitemap.xml` est généré par `@astrojs/sitemap` avec les alternates de langue. `site` vaut
+`sitemap.xml` est généré par `src/pages/sitemap.xml.ts` avec les alternates de langue
+(`@astrojs/sitemap` exigeait un paquet retiré d'Astro 7 ; 12 URL ne justifient pas une dépendance). `site` vaut
 `https://clementrieux.com`.
 
 **Fichiers supprimés** : tout l'ancien site Quarto — `_quarto.yml`, `*.qmd`, `posts/`, `_freeze/`,
@@ -141,7 +142,7 @@ public/
 
 ## Qualité et tests
 
-**Hooks `prek`** (avant chaque commit) : `astro check`, Prettier, `actionlint`, `zizmor`.
+**Hooks `prek`** (avant chaque commit) : `oxfmt`, `oxlint`, `astro check`, `actionlint`, `zizmor`.
 
 **Tests sur le site construit (`dist/`)**, lancés en local et en CI :
 
