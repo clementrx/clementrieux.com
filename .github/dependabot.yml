@@ -9,6 +9,13 @@ updates:
     groups:
       npm:
         patterns: ["*"]
+    ignore:
+      # astro check only supports TypeScript 5 and 6.
+      - dependency-name: "typescript"
+        update-types: ["version-update:semver-major"]
+      # Types must match the Node major in .nvmrc (22).
+      - dependency-name: "@types/node"
+        update-types: ["version-update:semver-major"]
 
   - package-ecosystem: github-actions
     directory: /
