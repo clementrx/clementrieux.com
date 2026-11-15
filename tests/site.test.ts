@@ -7,7 +7,9 @@ import { ALL_URLS, LANGS, PAGES, SITE, pageUrl } from "./site-map";
 
 const OG_LOCALES = { en: "en_US", fr: "fr_FR", es: "es_ES" } as const;
 
-const cases = LANGS.flatMap((lang) => PAGES.map((page) => ({ lang, page, url: pageUrl(lang, page) })));
+const cases = LANGS.flatMap((lang) =>
+  PAGES.map((page) => ({ lang, page, url: pageUrl(lang, page) })),
+);
 
 describe.each(cases)("page $url", ({ lang, page, url }) => {
   let doc: Page;
@@ -104,7 +106,7 @@ describe("whole site", () => {
   it("publishes a sitemap listing every page with its language alternates", () => {
     const sitemap = readHtml("/sitemap.xml");
     const locs = [...sitemap.matchAll(/<loc>([^<]+)<\/loc>/g)].map((m) => m[1]);
-    expect(locs.sort()).toEqual(ALL_URLS.map((u) => `${SITE}${u}`).sort());
+    expect(locs.toSorted()).toEqual(ALL_URLS.map((u) => `${SITE}${u}`).toSorted());
     expect(sitemap.match(/<xhtml:link /g)).toHaveLength(ALL_URLS.length * (LANGS.length + 1));
   });
 
@@ -114,6 +116,17 @@ describe("whole site", () => {
 
   it("keeps the custom domain", () => {
     expect(readHtml("/CNAME").trim()).toBe("clementrieux.com");
+  });
+
+  it.each(LANGS)("shows the four expertise domains in %s, linked from the home page", (lang) => {
+    const domains = ["data-science", "quant", "sport", "llm"];
+    const expertise = loadPage(pageUrl(lang, "expertise/"));
+    const home = loadPage(pageUrl(lang, ""));
+    for (const id of domains) {
+      expect(expertise.one(`section[id="${id}"] h2`), id).toBeDefined();
+      const href = `${pageUrl(lang, "expertise/")}#${id}`;
+      expect(home.one(`a[href="${href}"]`), href).toBeDefined();
+    }
   });
 
   it("serves a 404 page in all three languages", () => {
