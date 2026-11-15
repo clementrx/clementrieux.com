@@ -112,8 +112,7 @@ export const ui = {
     },
     expertise: {
       title: "Expertise",
-      intro:
-        "What I know, how I work and where I come from. Each section opens with a plain-language summary; the details that follow are written for specialists.",
+      intro: "What I can do and how I work.",
       inShort: "In short",
       toolbox: "Toolbox",
       certificationsTitle: "Anthropic certifications",
@@ -227,8 +226,7 @@ export const ui = {
     },
     expertise: {
       title: "Expertise",
-      intro:
-        "Ce que je sais faire, comment je travaille et d'où je viens. Chaque partie commence par un résumé en langage courant ; le détail qui suit s'adresse aux spécialistes.",
+      intro: "Ce que je sais faire et comment je travaille.",
       inShort: "En bref",
       toolbox: "Boîte à outils",
       certificationsTitle: "Certifications Anthropic",
@@ -346,8 +344,7 @@ export const ui = {
     },
     expertise: {
       title: "Especialidades",
-      intro:
-        "Lo que sé hacer, cómo trabajo y de dónde vengo. Cada sección empieza con un resumen en lenguaje sencillo; los detalles que siguen están pensados para especialistas.",
+      intro: "Lo que sé hacer y cómo trabajo.",
       inShort: "En resumen",
       toolbox: "Herramientas",
       certificationsTitle: "Certificaciones de Anthropic",
