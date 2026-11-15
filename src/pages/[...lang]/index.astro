@@ -1,0 +1,128 @@
+---
+import Base from "@/layouts/Base.astro";
+import { ui } from "@/i18n/ui";
+import { langFromParam, langStaticPaths, localizedPath } from "@/i18n/utils";
+import { domainsFor } from "@/lib/content";
+
+export const getStaticPaths = langStaticPaths;
+
+const lang = langFromParam(Astro.params.lang);
+const t = ui[lang];
+const domains = await domainsFor(lang);
+---
+
+<Base lang={lang} page="home" title={t.meta.home.title} description={t.meta.home.description}>
+  <div class="container">
+    <section class="hero" aria-labelledby="hero-title">
+      <img
+        class="portrait"
+        src="/clem.webp"
+        alt={t.home.portraitAlt}
+        width="240"
+        height="240"
+        fetchpriority="high"
+      />
+      <div>
+        <p class="eyebrow">{t.home.role}</p>
+        <h1 id="hero-title">Clément Rieux</h1>
+        <p class="lead prose">{t.home.lead}</p>
+        <p class="actions">
+          <a class="button button-primary" href={localizedPath(lang, "experience")}>
+            {t.home.ctaExperience}
+          </a>
+          <a class="button button-secondary" href={localizedPath(lang, "contact")}>
+            {t.home.ctaContact}
+          </a>
+        </p>
+      </div>
+    </section>
+
+    <section aria-labelledby="domains-title">
+      <h2 id="domains-title">{t.home.domainsTitle}</h2>
+      <ul class="domains">
+        {domains.map(({ slug, entry }) => (
+          <li class="domain">
+            <h3>
+              <a href={`${localizedPath(lang, "expertise")}#${slug}`}>{entry.data.title}</a>
+            </h3>
+            <p>{entry.data.summary}</p>
+          </li>
+        ))}
+      </ul>
+    </section>
+  </div>
+</Base>
+
+<style>
+  .hero {
+    display: grid;
+    gap: var(--space-4);
+    align-items: center;
+  }
+
+  .portrait {
+    width: 9rem;
+    height: 9rem;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+
+  .actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2) var(--space-3);
+    margin-top: var(--space-4);
+  }
+
+  .domains {
+    display: grid;
+    gap: var(--space-3);
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .domain {
+    position: relative;
+    padding: var(--space-4);
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+  }
+
+  .domain h3 {
+    margin-top: 0;
+  }
+
+  .domain a {
+    color: var(--text);
+    text-decoration-color: var(--accent);
+  }
+
+  .domain a::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+  }
+
+  .domain p {
+    margin: 0;
+    color: var(--muted);
+  }
+
+  @media (min-width: 48rem) {
+    .hero {
+      grid-template-columns: auto 1fr;
+      gap: var(--space-5);
+    }
+
+    .portrait {
+      width: 15rem;
+      height: 15rem;
+    }
+
+    .domains {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+</style>

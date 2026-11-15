@@ -1,0 +1,27 @@
+---
+import Base from "@/layouts/Base.astro";
+import { LANGS, ui } from "@/i18n/ui";
+import { localizedPath } from "@/i18n/utils";
+---
+
+<Base lang="en" title={`${ui.en.notFound.title} — Clément Rieux`} description={ui.en.notFound.text}>
+  <div class="container prose">
+    {LANGS.map((lang, index) => (
+      <section lang={lang}>
+        {index === 0 ? <h1>{ui[lang].notFound.title}</h1> : <h2>{ui[lang].notFound.title}</h2>}
+        <p>{ui[lang].notFound.text}</p>
+        <p>
+          <a href={localizedPath(lang, "home")}>{ui[lang].notFound.back}</a>
+        </p>
+      </section>
+    ))}
+  </div>
+</Base>
+
+<style>
+  section + section {
+    border-top: 1px solid var(--border);
+    margin-top: var(--space-4);
+    padding-top: var(--space-2);
+  }
+</style>

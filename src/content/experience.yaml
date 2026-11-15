@@ -1,0 +1,118 @@
+- id: edf
+  kind: work
+  order: 1
+  start: 2023
+  end: null
+  org: EDF
+  place: Paris
+  role:
+    en: Data Scientist
+    fr: Data scientist
+    es: Data scientist
+  summary:
+    en: Statistical analysis, scoring, time series, image classification, object detection and image segmentation.
+    fr: Analyses statistiques, scoring, séries temporelles, classification d'images, détection d'objets et segmentation d'images.
+    es: Análisis estadístico, scoring, series temporales, clasificación de imágenes, detección de objetos y segmentación de imágenes.
+
+- id: epsilon-edf
+  kind: work
+  order: 2
+  start: 2021
+  end: 2023
+  org: Epsilon France
+  place: Paris
+  role:
+    en: Data Science Consultant at EDF
+    fr: Consultant data scientist chez EDF
+    es: Consultor data scientist en EDF
+  summary:
+    en: Statistical analysis, time series, image classification, object detection and image segmentation.
+    fr: Analyses statistiques, séries temporelles, classification d'images, détection d'objets et segmentation d'images.
+    es: Análisis estadístico, series temporales, clasificación de imágenes, detección de objetos y segmentación de imágenes.
+
+- id: epsilon-training
+  kind: work
+  order: 3
+  start: 2021
+  end: 2023
+  org: Epsilon France
+  role:
+    en: R Trainer
+    fr: Formateur R
+    es: Formador de R
+  summary:
+    en: Training colleagues in advanced R, good practices and new methods.
+    fr: Formation à l'usage avancé de R, partage des bonnes pratiques et des nouvelles méthodes.
+    es: Formación en uso avanzado de R, buenas prácticas y nuevas metodologías.
+
+- id: epsilon-sfr
+  kind: work
+  order: 4
+  start: 2019
+  end: 2021
+  org: Epsilon France
+  place: Paris
+  role:
+    en: Data Science Consultant at SFR
+    fr: Consultant data scientist chez SFR
+    es: Consultor data scientist en SFR
+  summary:
+    en: Geostatistics on footfall and population movement data, automated quality and consistency checks, data visualisation and mapping.
+    fr: Géostatistique sur des données de fréquentation et de déplacement de population, contrôles de cohérence automatisés, data visualisation et cartographie.
+    es: Geoestadística con datos de afluencia y desplazamiento de población, controles de coherencia automatizados, visualización de datos y cartografía.
+
+- id: epsilon-research
+  kind: work
+  order: 5
+  start: 2019
+  end: 2019
+  org: Epsilon France
+  place: Paris
+  role:
+    en: Data Scientist
+    fr: Data scientist
+    es: Data scientist
+  summary:
+    en: Research project on automatic email processing (NLP), automated reporting, customer segmentation and customer journey analysis.
+    fr: Projet de recherche sur le traitement automatique des e-mails (NLP), reportings automatisés, segmentations et analyse des parcours clients.
+    es: Proyecto de investigación sobre el tratamiento automático de correos electrónicos (NLP), informes automatizados, segmentación y análisis del recorrido del cliente.
+
+- id: tse-teaching
+  kind: work
+  order: 6
+  start: 2018
+  end: 2018
+  org: Toulouse School of Economics
+  place: Toulouse
+  role:
+    en: Teaching Assistant in Macroeconomics
+    fr: Chargé de travaux dirigés en macroéconomie
+    es: Profesor asistente de macroeconomía
+  summary:
+    en: Leading tutorial groups, explaining and summarising course material.
+    fr: Animation de groupes de TD, synthèse et restitution des notions du cours.
+    es: Dirección de grupos de prácticas, síntesis y explicación de los contenidos del curso.
+
+- id: tse-master
+  kind: education
+  order: 1
+  start: 2018
+  end: 2019
+  org: Toulouse School of Economics
+  place: Toulouse
+  role:
+    en: Master's degree in Applied Economics (with honours)
+    fr: Master 2 Économie appliquée (mention bien)
+    es: Máster en Economía Aplicada (con mención)
+
+- id: tse-bachelor
+  kind: education
+  order: 2
+  start: 2014
+  end: 2017
+  org: Toulouse School of Economics
+  place: Toulouse
+  role:
+    en: Bachelor's degree in Economics and Management
+    fr: Licence d'économie et gestion
+    es: Grado en Economía y Gestión

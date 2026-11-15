@@ -1,0 +1,64 @@
+---
+import { LANG_NAMES, LANGS, ui, type Lang, type PageKey } from "@/i18n/ui";
+import { localizedPath } from "@/i18n/utils";
+
+interface Props {
+  lang: Lang;
+  page: PageKey;
+}
+
+const { lang, page } = Astro.props;
+---
+
+<nav class="lang" aria-label={ui[lang].languageLabel} data-lang-switcher>
+  <ul>
+    {LANGS.map((code) =>
+      code === lang ? (
+        <li>
+          <span aria-current="true" lang={code}>
+            {code.toUpperCase()}
+          </span>
+        </li>
+      ) : (
+        <li>
+          <a href={localizedPath(code, page)} hreflang={code} lang={code} title={LANG_NAMES[code]}>
+            <span aria-hidden="true">{code.toUpperCase()}</span>
+            <span class="visually-hidden">{LANG_NAMES[code]}</span>
+          </a>
+        </li>
+      ),
+    )}
+  </ul>
+</nav>
+
+<style>
+  ul {
+    display: flex;
+    gap: var(--space-1);
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    font-family: var(--font-mono);
+    font-size: 0.875rem;
+  }
+
+  a,
+  span[aria-current] {
+    display: inline-block;
+    padding: var(--space-1) var(--space-2);
+    border-radius: var(--radius);
+    min-width: 2.75rem;
+    min-height: 2.75rem;
+    line-height: 2.25rem;
+    text-align: center;
+  }
+
+  a {
+    text-decoration: none;
+  }
+
+  span[aria-current] {
+    font-weight: 700;
+    background: var(--surface);
+  }
+</style>
