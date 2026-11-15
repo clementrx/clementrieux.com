@@ -7,7 +7,11 @@ skills:
   - label: "Models and platforms"
     items: ["Claude API", "Claude Code", "Codex", "Ollama", "MLX"]
   - label: "Building blocks"
-    items: ["Tool use", "MCP", "Agent skills", "RAG", "Structured outputs", "Evaluation"]
+    items: ["Tool use", "MCP", "Agent skills", "Structured outputs", "Evaluation"]
+  - label: "RAG"
+    items: ["LangChain", "BGE-M3", "Qdrant"]
+  - label: "Frameworks"
+    items: ["Superpowers", "BMAD Method", "GSD", "Spec Kit"]
 ---
 
 ### What I build
@@ -16,6 +20,24 @@ skills:
 - **LLM applications**: integrations with the Claude API using tool use, structured outputs, prompt caching and retrieval over internal documents.
 - **Skills, tools and MCP servers**: packaging domain knowledge as agent skills, and writing tools and Model Context Protocol servers that connect agents to databases, APIs and files.
 - **Private setups**: open-weight models running on a laptop (Ollama, MLX) when data must stay in-house.
+
+### RAG
+
+Assistants that answer from a document collection (PDFs, articles) and cite their sources:
+
+- **Ingestion**: extraction, cleaning, semantic chunking, metadata and embeddings.
+- **Retrieval**: semantic and hybrid search, reranking.
+- **Evaluation**: retrieval relevance, answer faithfulness, answer quality.
+- **Tools**: [LangChain](https://github.com/langchain-ai/langchain), [BGE-M3](https://huggingface.co/BAAI/bge-m3) embeddings and the [Qdrant](https://github.com/qdrant/qdrant) vector database.
+
+### Agentic development frameworks
+
+Spec-driven development methods I use with Claude Code and Codex:
+
+- [Superpowers](https://github.com/obra/superpowers): agent skills and a complete development methodology, from design to review.
+- [BMAD Method](https://github.com/bmad-code-org/BMAD-METHOD): agile development driven by specialised agents.
+- [GSD (Get Shit Done)](https://github.com/gsd-build/get-shit-done): meta-prompting, context engineering and spec-driven development.
+- [Spec Kit](https://github.com/github/spec-kit): GitHub's toolkit for spec-driven development.
 
 ### How I keep agents reliable
 

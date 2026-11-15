@@ -12,8 +12,6 @@ skills:
       ["scikit-learn", "PyTorch", "TensorFlow", "LightGBM", "CatBoost", "XGBoost", "Optuna", "SHAP"]
   - label: "Time series"
     items: ["Prophet", "Chronos", "AutoGluon", "TimesFM"]
-  - label: "NLP and RAG"
-    items: ["LangChain", "BGE-M3", "Qdrant"]
   - label: "Data platforms"
     items: ["Oracle", "Hive", "PySpark", "PostgreSQL"]
   - label: "Deployment"
@@ -45,20 +43,10 @@ The models I use, chosen for the problem rather than out of habit:
 - **Reliable probabilities**: calibration (isotonic, beta), conformal intervals (MAPIE) and out-of-distribution detection.
 - **Tuning and interpretation**: Optuna for hyperparameters, SHAP to explain predictions.
 
-### NLP and RAG
-
-Making use of text, from emails to PDFs and scientific articles:
-
-- **Text processing**: text classification, information extraction, automatic email processing.
-- **RAG**: assistants that answer from a document collection (PDFs, articles) and cite their sources.
-- **Ingestion**: extraction, cleaning, semantic chunking, metadata enrichment and embedding computation.
-- **Retrieval**: semantic and hybrid search combining embeddings and keywords, then reranking of the most relevant passages.
-- **Evaluation**: retrieval relevance, faithfulness of answers to the documents and overall answer quality.
-- **Tools**: [LangChain](https://github.com/langchain-ai/langchain), [BGE-M3](https://huggingface.co/BAAI/bge-m3) embeddings and the [Qdrant](https://github.com/qdrant/qdrant) vector database.
-
 ### Other modelling areas
 
 - **Classification and scoring**: calibrated probabilities, metrics chosen from the real cost of each kind of error.
+- **NLP**: text classification, information extraction, automatic email processing.
 - **Reinforcement learning**: sequential decisions where an agent learns from the consequences of its actions.
 - **Econometrics and finance**: causal questions, panel data, market data. Backtests without look-ahead, with costs modelled and an out-of-sample period kept untouched until the end.
 

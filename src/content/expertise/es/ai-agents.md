@@ -7,7 +7,11 @@ skills:
   - label: "Modelos y plataformas"
     items: ["Claude API", "Claude Code", "Codex", "Ollama", "MLX"]
   - label: "Componentes"
-    items: ["Tool use", "MCP", "Skills de agente", "RAG", "Salidas estructuradas", "Evaluación"]
+    items: ["Tool use", "MCP", "Skills de agente", "Salidas estructuradas", "Evaluación"]
+  - label: "RAG"
+    items: ["LangChain", "BGE-M3", "Qdrant"]
+  - label: "Frameworks"
+    items: ["Superpowers", "BMAD Method", "GSD", "Spec Kit"]
 ---
 
 ### Lo que construyo
@@ -16,6 +20,24 @@ skills:
 - **Aplicaciones LLM**: integraciones con la API de Claude con tool use, salidas estructuradas, caché de prompts y búsqueda en documentos internos.
 - **Skills, tools y servidores MCP**: convertir el conocimiento de negocio en skills de agente y escribir herramientas y servidores Model Context Protocol que conectan los agentes con bases de datos, API y archivos.
 - **Entornos privados**: modelos open-weight que funcionan en un portátil (Ollama, MLX) cuando los datos deben quedarse en casa.
+
+### RAG
+
+Asistentes que responden a partir de una base documental (PDF, artículos) y citan sus fuentes:
+
+- **Ingesta**: extracción, limpieza, segmentación semántica (chunking), metadatos y embeddings.
+- **Búsqueda**: búsqueda semántica e híbrida, reranking.
+- **Evaluación**: pertinencia de la búsqueda, fidelidad de las respuestas (faithfulness), calidad de las respuestas.
+- **Herramientas**: [LangChain](https://github.com/langchain-ai/langchain), los embeddings [BGE-M3](https://huggingface.co/BAAI/bge-m3) y la base vectorial [Qdrant](https://github.com/qdrant/qdrant).
+
+### Frameworks de desarrollo con agentes
+
+Métodos de desarrollo guiado por especificaciones que uso con Claude Code y Codex:
+
+- [Superpowers](https://github.com/obra/superpowers): skills de agente y una metodología de desarrollo completa, del diseño a la revisión.
+- [BMAD Method](https://github.com/bmad-code-org/BMAD-METHOD): desarrollo ágil guiado por agentes especializados.
+- [GSD (Get Shit Done)](https://github.com/gsd-build/get-shit-done): meta-prompting, ingeniería de contexto y desarrollo guiado por especificaciones.
+- [Spec Kit](https://github.com/github/spec-kit): el kit de GitHub para el spec-driven development.
 
 ### Cómo hago fiables a los agentes
 
