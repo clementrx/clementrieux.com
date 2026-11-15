@@ -194,7 +194,7 @@ export const ui = {
           ],
         },
       ],
-      spokenLanguages: ["French: native", "English: fluent", "Spanish: intermediate"],
+      spokenLanguages: ["French: native", "English: C1", "Spanish: C1"],
     },
     contact: {
       title: "Contact",
@@ -330,11 +330,7 @@ export const ui = {
           ],
         },
       ],
-      spokenLanguages: [
-        "Français : langue maternelle",
-        "Anglais : courant",
-        "Espagnol : intermédiaire",
-      ],
+      spokenLanguages: ["Français : langue maternelle", "Anglais : C1", "Espagnol : C1"],
     },
     contact: {
       title: "Contact",
@@ -470,7 +466,7 @@ export const ui = {
           ],
         },
       ],
-      spokenLanguages: ["Francés: lengua materna", "Inglés: fluido", "Español: intermedio"],
+      spokenLanguages: ["Francés: lengua materna", "Inglés: C1", "Español: C1"],
     },
     contact: {
       title: "Contacto",
