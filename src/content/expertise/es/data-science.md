@@ -16,10 +16,12 @@ skills:
         "Chronos",
         "AutoGluon",
         "TimesFM",
+        "LangChain",
+        "BGE-M3",
         "R Shiny",
       ]
   - label: "Plataformas de datos"
-    items: ["Oracle", "Hive", "PySpark", "PostgreSQL"]
+    items: ["Oracle", "Hive", "PySpark", "PostgreSQL", "Qdrant"]
   - label: "Despliegue"
     items: ["Docker", "AWS", "GCP", "Git", "CI"]
   - label: "Fundamentos"
@@ -38,7 +40,7 @@ La previsión está en el centro de mi trabajo. Me ocupo de lo que hace difícil
 ### Modelización
 
 - **Clasificación y scoring**: probabilidades calibradas, métricas elegidas según el coste real de cada tipo de error.
-- **NLP y RAG**: clasificación de textos, extracción de información, asistentes que consultan bases documentales (PDF, artículos), con segmentación semántica, embeddings, búsqueda híbrida, reranking y evaluación de la fidelidad de las respuestas.
+- **NLP y RAG**: clasificación de textos, extracción de información, asistentes que consultan bases documentales (PDF, artículos), con segmentación semántica, embeddings, búsqueda híbrida, reranking y evaluación de la fidelidad de las respuestas, construidos con [LangChain](https://github.com/langchain-ai/langchain), los embeddings [BGE-M3](https://huggingface.co/BAAI/bge-m3) y la base vectorial [Qdrant](https://github.com/qdrant/qdrant).
 - **Machine learning y deep learning**: gradient boosting con datos tabulares, redes neuronales para visión por computadora (clasificación, detección de objetos, segmentación).
 - **Aprendizaje por refuerzo**: decisiones secuenciales en las que un agente aprende de las consecuencias de sus acciones.
 - **Econometría y finanzas**: preguntas causales, datos de panel, datos de mercado. Backtests sin fugas temporales, con los costes modelizados y un periodo fuera de muestra intacto hasta el final.

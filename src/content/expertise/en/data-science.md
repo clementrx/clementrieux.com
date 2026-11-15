@@ -16,10 +16,12 @@ skills:
         "Chronos",
         "AutoGluon",
         "TimesFM",
+        "LangChain",
+        "BGE-M3",
         "R Shiny",
       ]
   - label: "Data platforms"
-    items: ["Oracle", "Hive", "PySpark", "PostgreSQL"]
+    items: ["Oracle", "Hive", "PySpark", "PostgreSQL", "Qdrant"]
   - label: "Deployment"
     items: ["Docker", "AWS", "GCP", "Git", "CI"]
   - label: "Foundations"
@@ -38,7 +40,7 @@ Forecasting is at the heart of my work. I deal with what makes real-world series
 ### Modelling
 
 - **Classification and scoring**: calibrated probabilities, metrics chosen from the real cost of each kind of error.
-- **NLP and RAG**: text classification, information extraction, assistants that query document collections (PDFs, articles), with semantic chunking, embeddings, hybrid search, reranking and evaluation of answer faithfulness.
+- **NLP and RAG**: text classification, information extraction, assistants that query document collections (PDFs, articles), with semantic chunking, embeddings, hybrid search, reranking and evaluation of answer faithfulness, built with [LangChain](https://github.com/langchain-ai/langchain), [BGE-M3](https://huggingface.co/BAAI/bge-m3) embeddings and the [Qdrant](https://github.com/qdrant/qdrant) vector database.
 - **Machine learning and deep learning**: gradient boosting on tabular data, neural networks for computer vision (classification, object detection, segmentation).
 - **Reinforcement learning**: sequential decisions where an agent learns from the consequences of its actions.
 - **Econometrics and finance**: causal questions, panel data, market data. Backtests without look-ahead, with costs modelled and an out-of-sample period kept untouched until the end.
