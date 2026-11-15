@@ -150,6 +150,22 @@ describe("whole site", () => {
     },
   );
 
+  it.each(LANGS)("offers an expertise table of contents covering every heading in %s", (lang) => {
+    const page = loadPage(pageUrl(lang, "expertise/"));
+    const toc = page.one("nav[data-toc]");
+    expect(toc, "table of contents").toBeDefined();
+    expect(attr(toc, "aria-label")).toBeTruthy();
+    const targets = [
+      ...page.all("main section[id]").map((section) => attr(section, "id")),
+      ...page.all("h3").map((heading) => attr(heading, "id")),
+    ];
+    expect(targets.length).toBeGreaterThan(8);
+    for (const id of targets) {
+      expect(id, "every section and subsection needs an id").toBeTruthy();
+      expect(page.one(`nav[data-toc] a[href="#${id}"]`), `link to #${id}`).toBeDefined();
+    }
+  });
+
   it("serves a 404 page in all three languages", () => {
     const doc = loadPage("/404.html");
     for (const lang of LANGS) {

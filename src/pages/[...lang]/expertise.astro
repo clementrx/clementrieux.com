@@ -9,11 +9,20 @@ export const getStaticPaths = langStaticPaths;
 
 const lang = langFromParam(Astro.params.lang);
 const t = ui[lang];
+
 const domains = await Promise.all(
-  (await domainsFor(lang)).map(async (domain) => ({
-    ...domain,
-    Content: (await render(domain.entry)).Content,
-  })),
+  (await domainsFor(lang)).map(async (domain) => {
+    const { Content, headings } = await render(domain.entry);
+    const { skills, showCertifications } = domain.entry.data;
+    const subsections = [
+      ...headings.filter((h) => h.depth === 3).map((h) => ({ id: h.slug, text: h.text })),
+      ...(skills ? [{ id: `${domain.slug}-toolbox`, text: t.expertise.toolbox }] : []),
+      ...(showCertifications
+        ? [{ id: `${domain.slug}-certifications`, text: t.expertise.certificationsTitle }]
+        : []),
+    ];
+    return { ...domain, Content, subsections };
+  }),
 );
 const certs = await certifications();
 const monthYear = new Intl.DateTimeFormat(lang, { month: "long", year: "numeric" });
@@ -26,72 +35,285 @@ const issuedOn = (issued: string) => monthYear.format(new Date(`${issued}-01T12:
   title={t.meta.expertise.title}
   description={t.meta.expertise.description}
 >
-  <div class="container prose">
-    <h1>{t.expertise.title}</h1>
-    <p class="lead">{t.expertise.intro}</p>
+  <div class="container layout">
+    <header class="page-head">
+      <h1>{t.expertise.title}</h1>
+      <p class="lead">{t.expertise.intro}</p>
+    </header>
 
-    {domains.map(({ slug, entry, Content }) => (
-      <section id={slug} aria-labelledby={`${slug}-title`} class="domain">
-        <h2 id={`${slug}-title`}>{entry.data.title}</h2>
-        <div class="summary">
-          <p class="eyebrow">{t.expertise.inShort}</p>
-          <p>{entry.data.summary}</p>
-        </div>
-        <Content />
-
-        {entry.data.skills && (
-          <>
-            <h3>{t.expertise.toolbox}</h3>
-            <dl class="toolbox">
-              {entry.data.skills.map((group) => (
-                <div>
-                  <dt>{group.label}</dt>
-                  <dd>
-                    <ul class="chips">
-                      {group.items.map((item) => (
-                        <li>{item}</li>
-                      ))}
-                    </ul>
-                  </dd>
-                </div>
-              ))}
-            </dl>
-          </>
-        )}
-
-        {entry.data.showCertifications && (
-          <>
-            <h3>{t.expertise.certificationsTitle}</h3>
-            <ul class="certs">
-              {certs.map(({ data }) => (
+    <nav class="toc" aria-label={t.expertise.tocLabel} data-toc>
+      <p class="toc-title eyebrow">{t.expertise.tocLabel}</p>
+      <ol class="toc-domains">
+        {domains.map(({ slug, entry, subsections }) => (
+          <li>
+            <a href={`#${slug}`} data-toc-link={slug}>
+              {entry.data.title}
+            </a>
+            <ol class="toc-subs">
+              {subsections.map((sub) => (
                 <li>
-                  <span class="cert-name">{data.name}</span>
-                  <span class="cert-meta">
-                    {data.issuer} · {issuedOn(data.issued)}
-                  </span>
-                  <a href={data.url} aria-label={`${t.expertise.verify}: ${data.name}`}>
-                    {t.expertise.verify}
+                  <a href={`#${sub.id}`} data-toc-link={sub.id}>
+                    {sub.text}
                   </a>
                 </li>
               ))}
-            </ul>
-          </>
-        )}
-      </section>
-    ))}
+            </ol>
+          </li>
+        ))}
+      </ol>
+    </nav>
+
+    <div class="content">
+      {domains.map(({ slug, entry, Content }) => (
+        <section id={slug} aria-labelledby={`${slug}-title`} class="domain" data-toc-target>
+          <h2 id={`${slug}-title`}>{entry.data.title}</h2>
+          <div class="summary">
+            <p class="eyebrow">{t.expertise.inShort}</p>
+            <p>{entry.data.summary}</p>
+          </div>
+          <Content />
+
+          {entry.data.skills && (
+            <>
+              <h3 id={`${slug}-toolbox`}>{t.expertise.toolbox}</h3>
+              <dl class="toolbox">
+                {entry.data.skills.map((group) => (
+                  <div>
+                    <dt>{group.label}</dt>
+                    <dd>
+                      <ul class="chips">
+                        {group.items.map((item) => (
+                          <li>{item}</li>
+                        ))}
+                      </ul>
+                    </dd>
+                  </div>
+                ))}
+              </dl>
+            </>
+          )}
+
+          {entry.data.showCertifications && (
+            <>
+              <h3 id={`${slug}-certifications`}>{t.expertise.certificationsTitle}</h3>
+              <ul class="certs">
+                {certs.map(({ data }) => (
+                  <li>
+                    <span class="cert-name">{data.name}</span>
+                    <span class="cert-meta">
+                      {data.issuer} · {issuedOn(data.issued)}
+                    </span>
+                    <a href={data.url} aria-label={`${t.expertise.verify}: ${data.name}`}>
+                      {t.expertise.verify}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </>
+          )}
+        </section>
+      ))}
+    </div>
   </div>
 </Base>
 
+<script is:inline>
+  (() => {
+    const toc = document.querySelector("[data-toc]");
+    if (!toc) return;
+    const links = new Map(
+      [...toc.querySelectorAll("[data-toc-link]")].map((a) => [a.dataset.tocLink, a]),
+    );
+    const sections = [...document.querySelectorAll("[data-toc-target]")];
+    let scheduled = false;
+
+    const update = () => {
+      scheduled = false;
+      const line = window.innerHeight * 0.25;
+      const passed = (el) => el.getBoundingClientRect().top <= line;
+      const section = sections.findLast(passed) ?? sections[0];
+      const heading = section ? [...section.querySelectorAll("h3[id]")].findLast(passed) : null;
+      for (const a of links.values()) a.removeAttribute("aria-current");
+      for (const el of [section, heading]) {
+        const link = el && links.get(el.id);
+        if (link) link.setAttribute("aria-current", "true");
+      }
+      const domainLink = section && links.get(section.id);
+      if (domainLink && toc.scrollWidth > toc.clientWidth + 1) {
+        toc.scrollTo({ left: domainLink.offsetLeft - 16, behavior: "smooth" });
+      }
+    };
+
+    const schedule = () => {
+      if (!scheduled) {
+        scheduled = true;
+        requestAnimationFrame(update);
+      }
+    };
+    addEventListener("scroll", schedule, { passive: true });
+    addEventListener("resize", schedule);
+    update();
+  })();
+</script>
+
 <style>
+  .page-head .lead {
+    margin-bottom: var(--space-4);
+  }
+
+  .content {
+    min-width: 0;
+  }
+
+  /* Mobile: the table of contents is a sticky, horizontally scrollable bar of the four parts. */
+  .toc {
+    position: sticky;
+    top: 0;
+    z-index: 5;
+    margin-inline: calc(-1 * var(--space-3));
+    padding: var(--space-2) var(--space-3);
+    background: var(--bg);
+    border-bottom: 1px solid var(--border);
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+
+  .toc-title,
+  .toc-subs {
+    display: none;
+  }
+
+  .toc ol {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .toc-domains {
+    display: flex;
+    gap: var(--space-2);
+    width: max-content;
+  }
+
+  .toc-domains > li > a {
+    display: inline-block;
+    padding: var(--space-1) var(--space-3);
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    color: var(--text);
+    text-decoration: none;
+    font-size: 0.9375rem;
+    white-space: nowrap;
+  }
+
+  .toc-domains > li > a[aria-current="true"] {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: var(--accent-contrast);
+  }
+
   .domain {
-    scroll-margin-top: var(--space-4);
+    scroll-margin-top: 4rem;
     padding-top: var(--space-3);
     border-top: 1px solid var(--border);
     margin-top: var(--space-5);
   }
 
+  .domain :global(h3) {
+    scroll-margin-top: 4rem;
+  }
+
   .domain h2 {
     margin-top: 0;
+  }
+
+  /* Desktop: the table of contents becomes a sticky sidebar with every subsection. */
+  @media (min-width: 64rem) {
+    .layout {
+      display: grid;
+      grid-template-columns: 13rem minmax(0, var(--measure));
+      column-gap: var(--space-5);
+      justify-content: center;
+    }
+
+    .page-head {
+      grid-column: 2;
+    }
+
+    .toc {
+      grid-column: 1;
+      grid-row: 1 / span 2;
+      align-self: start;
+      top: var(--space-4);
+      max-height: calc(100vh - 2 * var(--space-4));
+      margin: 0;
+      padding: 0;
+      overflow: auto;
+      border: 0;
+      background: none;
+    }
+
+    .content {
+      grid-column: 2;
+    }
+
+    .toc-title {
+      display: block;
+    }
+
+    .toc-domains {
+      display: block;
+      width: auto;
+    }
+
+    .toc-domains > li {
+      margin-bottom: var(--space-3);
+    }
+
+    .toc-domains > li > a {
+      padding: 0;
+      border: 0;
+      border-radius: 0;
+      font-weight: 600;
+      white-space: normal;
+    }
+
+    .toc-domains > li > a[aria-current="true"] {
+      background: none;
+      color: var(--accent);
+    }
+
+    .toc-subs {
+      display: block;
+      margin-top: var(--space-1);
+      border-left: 2px solid var(--border);
+    }
+
+    .toc-subs a {
+      display: block;
+      padding: 0.125rem 0 0.125rem var(--space-3);
+      margin-left: -2px;
+      border-left: 2px solid transparent;
+      color: var(--muted);
+      font-size: 0.875rem;
+      line-height: 1.4;
+      text-decoration: none;
+    }
+
+    .toc-subs a:hover {
+      color: var(--text);
+    }
+
+    .toc-subs a[aria-current="true"] {
+      border-left-color: var(--accent);
+      color: var(--text);
+      font-weight: 600;
+    }
+
+    .domain,
+    .domain :global(h3) {
+      scroll-margin-top: var(--space-4);
+    }
   }
 
   .summary {

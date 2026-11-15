@@ -48,6 +48,7 @@ interface UI {
     intro: string;
     inShort: string;
     toolbox: string;
+    tocLabel: string;
     certificationsTitle: string;
     verify: string;
   };
@@ -115,6 +116,7 @@ export const ui = {
       intro: "What I can do and how I work.",
       inShort: "In short",
       toolbox: "Toolbox",
+      tocLabel: "On this page",
       certificationsTitle: "Anthropic certifications",
       verify: "Verify",
     },
@@ -250,6 +252,7 @@ export const ui = {
       intro: "Ce que je sais faire et comment je travaille.",
       inShort: "En bref",
       toolbox: "Boîte à outils",
+      tocLabel: "Sur cette page",
       certificationsTitle: "Certifications Anthropic",
       verify: "Vérifier",
     },
@@ -389,6 +392,7 @@ export const ui = {
       intro: "Lo que sé hacer y cómo trabajo.",
       inShort: "En resumen",
       toolbox: "Herramientas",
+      tocLabel: "En esta página",
       certificationsTitle: "Certificaciones de Anthropic",
       verify: "Verificar",
     },
