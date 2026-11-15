@@ -5,25 +5,19 @@ order: 1
 skills:
   - label: "Langages"
     items: ["Python", "R", "SQL"]
-  - label: "Bibliothèques"
+  - label: "Données"
+    items: ["pandas", "Polars", "NumPy"]
+  - label: "Machine learning"
     items:
-      [
-        "pandas",
-        "Polars",
-        "NumPy",
-        "scikit-learn",
-        "Prophet",
-        "Chronos",
-        "AutoGluon",
-        "TimesFM",
-        "LangChain",
-        "BGE-M3",
-        "R Shiny",
-      ]
+      ["scikit-learn", "PyTorch", "TensorFlow", "LightGBM", "CatBoost", "XGBoost", "Optuna", "SHAP"]
+  - label: "Séries temporelles"
+    items: ["Prophet", "Chronos", "AutoGluon", "TimesFM"]
+  - label: "NLP et RAG"
+    items: ["LangChain", "BGE-M3", "Qdrant"]
   - label: "Plateformes de données"
-    items: ["Oracle", "Hive", "PySpark", "PostgreSQL", "Qdrant"]
+    items: ["Oracle", "Hive", "PySpark", "PostgreSQL"]
   - label: "Déploiement"
-    items: ["Docker", "AWS", "GCP", "Git", "CI"]
+    items: ["Docker", "AWS", "GCP", "Git", "CI", "R Shiny"]
   - label: "Fondamentaux"
     items: ["Mathématiques", "Statistiques", "Économétrie", "Informatique", "Finance"]
 ---
@@ -37,11 +31,21 @@ La prévision est au cœur de mon travail. Je traite ce qui rend les séries ré
 - **Modèles et frameworks** : [Prophet](https://github.com/meta/prophet), [Chronos](https://github.com/amazon-science/chronos-forecasting), [AutoGluon](https://auto.gluon.ai/stable/index.html) et [TimesFM](https://github.com/google-research/timesfm).
 - **Évaluation** : MAE, MAPE, MSE et RMSE, ainsi que des **métriques sur mesure** construites pour la problématique, car surestimer et sous-estimer coûtent rarement la même chose.
 
-### Modélisation
+### Machine learning et deep learning
+
+Les modèles que j'utilise, choisis selon le problème plutôt que par habitude :
+
+- **Bibliothèques** : scikit-learn, PyTorch, TensorFlow, LightGBM, CatBoost et XGBoost.
+- **Classification sur données tabulaires** : régression logistique, random forest, gradient boosting (LightGBM, CatBoost, XGBoost) et NGBoost pour des prédictions probabilistes.
+- **Deep learning** : réseaux denses (MLP), TabNet, réseaux récurrents (RNN, LSTM), Transformers et mécanismes d'attention, embeddings d'entités, et CNN pour la vision par ordinateur (classification, détection d'objets, segmentation).
+- **Learning to rank** : LambdaRank, YetiRank et XGBRanker, quand il faut ordonner des candidats entre eux plutôt que les juger un par un.
+- **Modèles de classement probabilistes** : Plackett-Luce et Harville pour passer de scores à des probabilités d'ordre d'arrivée, notations Elo et TrueSkill.
+- **Réglage et interprétation** : Optuna pour les hyperparamètres, SHAP pour expliquer les prédictions.
+
+### Autres domaines de modélisation
 
 - **Classification et scoring** : probabilités calibrées, métriques choisies selon le coût réel de chaque type d'erreur.
 - **NLP et RAG** : classification de textes, extraction d'informations, assistants qui interrogent des bases documentaires (PDF, articles), avec découpage sémantique, embeddings, recherche hybride, reranking et évaluation de la fidélité des réponses, construits avec [LangChain](https://github.com/langchain-ai/langchain), les embeddings [BGE-M3](https://huggingface.co/BAAI/bge-m3) et la base vectorielle [Qdrant](https://github.com/qdrant/qdrant).
-- **Machine learning et deep learning** : gradient boosting sur données tabulaires, réseaux de neurones pour la vision par ordinateur (classification, détection d'objets, segmentation).
 - **Apprentissage par renforcement** : décisions séquentielles où un agent apprend des conséquences de ses actions.
 - **Économétrie et finance** : questions causales, données de panel, données de marché. Des backtests sans fuite temporelle, avec les coûts modélisés et une période hors échantillon gardée intacte jusqu'à la fin.
 
@@ -50,7 +54,7 @@ La prévision est au cœur de mon travail. Je traite ce qui rend les séries ré
 - **Nettoyage** : données incomplètes ou hétérogènes, cas particuliers métier, valeurs manquantes imputées sans jamais utiliser d'information future.
 - **Feature engineering** : variables construites à partir de l'historique, agrégations temporelles, classements de type Elo, toujours limitées à l'information disponible au moment de la décision.
 - **Sélection de variables** : importance dans les modèles et tests de stabilité par rééchantillonnage, pour garder ce qui tient et écarter ce qui relève du hasard.
-- **Probabilités fiables** : calibration, intervalles conformes et détection des cas hors distribution.
+- **Probabilités fiables** : calibration (isotonique, bêta), intervalles conformes (MAPIE) et détection des cas hors distribution.
 
 ### Du notebook à la production
 

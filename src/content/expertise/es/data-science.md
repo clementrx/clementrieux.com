@@ -5,25 +5,19 @@ order: 1
 skills:
   - label: "Lenguajes"
     items: ["Python", "R", "SQL"]
-  - label: "Librerías"
+  - label: "Datos"
+    items: ["pandas", "Polars", "NumPy"]
+  - label: "Machine learning"
     items:
-      [
-        "pandas",
-        "Polars",
-        "NumPy",
-        "scikit-learn",
-        "Prophet",
-        "Chronos",
-        "AutoGluon",
-        "TimesFM",
-        "LangChain",
-        "BGE-M3",
-        "R Shiny",
-      ]
+      ["scikit-learn", "PyTorch", "TensorFlow", "LightGBM", "CatBoost", "XGBoost", "Optuna", "SHAP"]
+  - label: "Series temporales"
+    items: ["Prophet", "Chronos", "AutoGluon", "TimesFM"]
+  - label: "NLP y RAG"
+    items: ["LangChain", "BGE-M3", "Qdrant"]
   - label: "Plataformas de datos"
-    items: ["Oracle", "Hive", "PySpark", "PostgreSQL", "Qdrant"]
+    items: ["Oracle", "Hive", "PySpark", "PostgreSQL"]
   - label: "Despliegue"
-    items: ["Docker", "AWS", "GCP", "Git", "CI"]
+    items: ["Docker", "AWS", "GCP", "Git", "CI", "R Shiny"]
   - label: "Fundamentos"
     items: ["Matemáticas", "Estadística", "Econometría", "Informática", "Finanzas"]
 ---
@@ -37,11 +31,21 @@ La previsión está en el centro de mi trabajo. Me ocupo de lo que hace difícil
 - **Modelos y frameworks**: [Prophet](https://github.com/meta/prophet), [Chronos](https://github.com/amazon-science/chronos-forecasting), [AutoGluon](https://auto.gluon.ai/stable/index.html) y [TimesFM](https://github.com/google-research/timesfm).
 - **Evaluación**: MAE, MAPE, MSE y RMSE, además de **métricas a medida** construidas para cada problema, porque sobrestimar e infraestimar rara vez cuestan lo mismo.
 
-### Modelización
+### Machine learning y deep learning
+
+Los modelos que uso, elegidos según el problema y no por costumbre:
+
+- **Librerías**: scikit-learn, PyTorch, TensorFlow, LightGBM, CatBoost y XGBoost.
+- **Clasificación con datos tabulares**: regresión logística, random forest, gradient boosting (LightGBM, CatBoost, XGBoost) y NGBoost para predicciones probabilísticas.
+- **Deep learning**: redes densas (MLP), TabNet, redes recurrentes (RNN, LSTM), Transformers y mecanismos de atención, embeddings de entidades, y CNN para visión por computadora (clasificación, detección de objetos, segmentación).
+- **Learning to rank**: LambdaRank, YetiRank y XGBRanker, cuando hay que ordenar candidatos entre sí en lugar de juzgarlos uno a uno.
+- **Modelos probabilísticos de clasificación**: Plackett-Luce y Harville para pasar de puntuaciones a probabilidades de orden de llegada, puntuaciones Elo y TrueSkill.
+- **Ajuste e interpretación**: Optuna para los hiperparámetros, SHAP para explicar las predicciones.
+
+### Otras áreas de modelización
 
 - **Clasificación y scoring**: probabilidades calibradas, métricas elegidas según el coste real de cada tipo de error.
 - **NLP y RAG**: clasificación de textos, extracción de información, asistentes que consultan bases documentales (PDF, artículos), con segmentación semántica, embeddings, búsqueda híbrida, reranking y evaluación de la fidelidad de las respuestas, construidos con [LangChain](https://github.com/langchain-ai/langchain), los embeddings [BGE-M3](https://huggingface.co/BAAI/bge-m3) y la base vectorial [Qdrant](https://github.com/qdrant/qdrant).
-- **Machine learning y deep learning**: gradient boosting con datos tabulares, redes neuronales para visión por computadora (clasificación, detección de objetos, segmentación).
 - **Aprendizaje por refuerzo**: decisiones secuenciales en las que un agente aprende de las consecuencias de sus acciones.
 - **Econometría y finanzas**: preguntas causales, datos de panel, datos de mercado. Backtests sin fugas temporales, con los costes modelizados y un periodo fuera de muestra intacto hasta el final.
 
@@ -50,7 +54,7 @@ La previsión está en el centro de mi trabajo. Me ocupo de lo que hace difícil
 - **Limpieza**: datos incompletos o heterogéneos, casos particulares del negocio, valores ausentes imputados sin usar nunca información futura.
 - **Feature engineering**: variables construidas a partir del historial, agregaciones temporales, clasificaciones tipo Elo, siempre limitadas a la información disponible en el momento de la decisión.
 - **Selección de variables**: importancia en los modelos y pruebas de estabilidad por remuestreo, para conservar lo que se sostiene y descartar lo que es azar.
-- **Probabilidades fiables**: calibración, intervalos conformes y detección de casos fuera de distribución.
+- **Probabilidades fiables**: calibración (isotónica, beta), intervalos conformes (MAPIE) y detección de casos fuera de distribución.
 
 ### Del notebook a producción
 
