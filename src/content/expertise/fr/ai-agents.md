@@ -5,9 +5,9 @@ order: 2
 showCertifications: true
 skills:
   - label: "Modèles et plateformes"
-    items: ["Claude API", "Claude Code", "Codex", "Ollama", "MLX"]
+    items: ["Claude API", "Claude Code", "Codex", "Gemini", "DeepSeek", "Ollama", "MLX"]
   - label: "Briques techniques"
-    items: ["Tool use", "MCP", "Skills d'agent", "Sorties structurées", "Évaluation"]
+    items: ["Tool use", "MCP", "Skills", "Sorties structurées", "Évaluation"]
   - label: "RAG"
     items: ["LangChain", "BGE-M3", "Qdrant"]
   - label: "Frameworks"
