@@ -18,14 +18,15 @@ const expertise = defineCollection({
 const experience = defineCollection({
   loader: file("src/content/experience.yaml"),
   schema: z.object({
-    kind: z.enum(["work", "education"]),
+    kind: z.enum(["work", "project", "education"]),
     order: z.number().int().positive(),
     start: z.number().int(),
     end: z.number().int().nullable(),
-    org: z.string(),
+    org: z.string().optional(),
     place: z.string().optional(),
     role: translated,
     summary: translated.optional(),
+    highlights: z.array(z.object({ label: translated, text: translated })).optional(),
   }),
 });
 

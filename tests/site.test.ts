@@ -173,6 +173,16 @@ describe("whole site", () => {
     expect(readFileSync(distFile(href)).subarray(0, 5).toString()).toBe("%PDF-");
   });
 
+  it.each(LANGS)("groups the Epsilon France missions into one entry in %s", (lang) => {
+    const html = readHtml(pageUrl(lang, "experience/"));
+    expect(html.match(/class="org"[^>]*>[^<]*Epsilon France/g)).toHaveLength(1);
+  });
+
+  it.each(LANGS)("shows the personal project on the experience page in %s", (lang) => {
+    const page = loadPage(pageUrl(lang, "experience/"));
+    expect(page.all("[data-projects] h3")).toHaveLength(1);
+  });
+
   it("serves a 404 page in all three languages", () => {
     const doc = loadPage("/404.html");
     for (const lang of LANGS) {
