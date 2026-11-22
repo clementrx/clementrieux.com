@@ -9,77 +9,96 @@
     en: Data Scientist
     fr: Data scientist
     es: Data scientist
-  summary:
-    en: Statistical analysis, scoring, time series, image classification, object detection and image segmentation.
-    fr: Analyses statistiques, scoring, séries temporelles, classification d'images, détection d'objets et segmentation d'images.
-    es: Análisis estadístico, scoring, series temporales, clasificación de imágenes, detección de objetos y segmentación de imágenes.
+  highlights:
+    - label:
+        en: Time series
+        fr: Séries temporelles
+        es: Series temporales
+      text:
+        en: forecasting with Prophet, Chronos and TimesFM, outlier detection, backtests and an application to visualise the results.
+        fr: prévision avec Prophet, Chronos et TimesFM, détection des valeurs aberrantes, backtests et application de visualisation des résultats.
+        es: previsión con Prophet, Chronos y TimesFM, detección de valores atípicos, backtests y aplicación de visualización de los resultados.
+    - label:
+        en: Computer vision
+        fr: Vision par ordinateur
+        es: Visión por computadora
+      text:
+        en: image classification, object detection and segmentation with deep learning.
+        fr: classification d'images, détection d'objets et segmentation par deep learning.
+        es: clasificación de imágenes, detección de objetos y segmentación con deep learning.
+    - label:
+        en: Scoring and statistical analysis
+        fr: Scoring et analyses statistiques
+        es: Scoring y análisis estadístico
+      text:
+        en: support for business decisions, from data exploration to presenting the results.
+        fr: au service des décisions métier, de l'exploration des données à la restitution des résultats.
+        es: al servicio de las decisiones de negocio, desde la exploración de los datos hasta la presentación de los resultados.
+    - label:
+        en: Production through CI/CD
+        fr: Mise en production via CI/CD
+        es: Puesta en producción mediante CI/CD
+      text:
+        en: automated pipelines and applications made available to business teams.
+        fr: pipelines automatisés et applications pour les équipes métier.
+        es: pipelines automatizados y aplicaciones para los equipos de negocio.
+    - label:
+        en: Mentoring data scientists
+        fr: Accompagnement des data scientists
+        es: Acompañamiento de los data scientists
+      text:
+        en: good practices in R and Python, use of agentic AI tools (skills, MCP, choosing the model and effort level).
+        fr: bonnes pratiques en R et en Python, usage des outils d'IA agentique (skills, MCP, choix du modèle et du niveau d'effort).
+        es: buenas prácticas en R y Python, uso de herramientas de IA agéntica (skills, MCP, elección del modelo y del nivel de esfuerzo).
 
-- id: epsilon-edf
+- id: epsilon
   kind: work
   order: 2
-  start: 2021
+  start: 2019
   end: 2023
   org: Epsilon France
   place: Paris
   role:
-    en: Data Science Consultant at EDF
-    fr: Consultant data scientist chez EDF
-    es: Consultor data scientist en EDF
-  summary:
-    en: Statistical analysis, time series, image classification, object detection and image segmentation.
-    fr: Analyses statistiques, séries temporelles, classification d'images, détection d'objets et segmentation d'images.
-    es: Análisis estadístico, series temporales, clasificación de imágenes, detección de objetos y segmentación de imágenes.
-
-- id: epsilon-training
-  kind: work
-  order: 3
-  start: 2021
-  end: 2023
-  org: Epsilon France
-  role:
-    en: R Trainer
-    fr: Formateur R
-    es: Formador de R
-  summary:
-    en: Training colleagues in advanced R, good practices and new methods.
-    fr: Formation à l'usage avancé de R, partage des bonnes pratiques et des nouvelles méthodes.
-    es: Formación en uso avanzado de R, buenas prácticas y nuevas metodologías.
-
-- id: epsilon-sfr
-  kind: work
-  order: 4
-  start: 2019
-  end: 2021
-  org: Epsilon France
-  place: Paris
-  role:
-    en: Data Science Consultant at SFR
-    fr: Consultant data scientist chez SFR
-    es: Consultor data scientist en SFR
-  summary:
-    en: Geostatistics on footfall and population movement data, automated quality and consistency checks, data visualisation and mapping.
-    fr: Géostatistique sur des données de fréquentation et de déplacement de population, contrôles de cohérence automatisés, data visualisation et cartographie.
-    es: Geoestadística con datos de afluencia y desplazamiento de población, controles de coherencia automatizados, visualización de datos y cartografía.
-
-- id: epsilon-research
-  kind: work
-  order: 5
-  start: 2019
-  end: 2019
-  org: Epsilon France
-  place: Paris
-  role:
-    en: Data Scientist
-    fr: Data scientist
-    es: Data scientist
-  summary:
-    en: Research project on automatic email processing (NLP), automated reporting, customer segmentation and customer journey analysis.
-    fr: Projet de recherche sur le traitement automatique des e-mails (NLP), reportings automatisés, segmentations et analyse des parcours clients.
-    es: Proyecto de investigación sobre el tratamiento automático de correos electrónicos (NLP), informes automatizados, segmentación y análisis del recorrido del cliente.
+    en: Data Science Consultant
+    fr: Consultant data scientist
+    es: Consultor data scientist
+  highlights:
+    - label:
+        en: EDF engagement (2021–2023)
+        fr: Mission EDF (2021–2023)
+        es: Misión en EDF (2021–2023)
+      text:
+        en: statistical analysis, time series forecasting, image classification, object detection and segmentation.
+        fr: analyses statistiques, prévision de séries temporelles, classification d'images, détection d'objets et segmentation.
+        es: análisis estadístico, previsión de series temporales, clasificación de imágenes, detección de objetos y segmentación.
+    - label:
+        en: SFR engagement (2019–2021)
+        fr: Mission SFR (2019–2021)
+        es: Misión en SFR (2019–2021)
+      text:
+        en: geostatistics in R on footfall and population movement data, R Shiny applications; automated consistency checks, data visualisation and mapping.
+        fr: géostatistique en R sur des données de fréquentation et de déplacement de population, applications R Shiny ; contrôles de cohérence automatisés, data visualisation et cartographie.
+        es: geoestadística en R con datos de afluencia y desplazamiento de población, aplicaciones R Shiny; controles de coherencia automatizados, visualización de datos y cartografía.
+    - label:
+        en: NLP research project (2019)
+        fr: Projet de recherche NLP (2019)
+        es: Proyecto de investigación NLP (2019)
+      text:
+        en: automatic email processing; automated reporting, customer segmentation and customer journey analysis.
+        fr: traitement automatique des e-mails ; reportings automatisés, segmentations et analyse des parcours clients.
+        es: tratamiento automático de correos electrónicos; informes automatizados, segmentación y análisis del recorrido del cliente.
+    - label:
+        en: Training and mentoring
+        fr: Formation et encadrement
+        es: Formación y tutoría
+      text:
+        en: trained consultants in advanced R (2021–2023), supervised interns.
+        fr: formation des consultants à l'usage avancé de R (2021–2023), encadrement de stagiaires.
+        es: formación de los consultores en uso avanzado de R (2021–2023), tutoría de becarios.
 
 - id: tse-teaching
   kind: work
-  order: 6
+  order: 3
   start: 2018
   end: 2018
   org: Toulouse School of Economics
@@ -89,9 +108,23 @@
     fr: Chargé de travaux dirigés en macroéconomie
     es: Profesor asistente de macroeconomía
   summary:
-    en: Leading tutorial groups, explaining and summarising course material.
+    en: Led tutorial groups, explained and summarised course material.
     fr: Animation de groupes de TD, synthèse et restitution des notions du cours.
     es: Dirección de grupos de prácticas, síntesis y explicación de los contenidos del curso.
+
+- id: horse-racing
+  kind: project
+  order: 1
+  start: 2018
+  end: null
+  role:
+    en: Horse racing prediction model
+    fr: Modèle de prédiction de courses hippiques
+    es: Modelo de predicción de carreras de caballos
+  summary:
+    en: Data collection by web scraping, ranking models (learning to rank) and calibrated probabilities, backtests without look-ahead bias, prediction pipeline automated daily.
+    fr: Collecte des données par web scraping, modèles de classement (learning to rank) et probabilités calibrées, backtests sans fuite temporelle, pipeline de prédiction automatisé chaque jour.
+    es: Recogida de datos mediante web scraping, modelos de ranking (learning to rank) y probabilidades calibradas, backtests sin fuga temporal, pipeline de predicción automatizado a diario.
 
 - id: tse-master
   kind: education

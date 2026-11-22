@@ -14,7 +14,7 @@ export async function domainsFor(lang: Lang): Promise<Domain[]> {
     .map((entry) => ({ slug: entry.id.slice(lang.length + 1), entry }));
 }
 
-export async function experienceOf(kind: "work" | "education") {
+export async function experienceOf(kind: "work" | "project" | "education") {
   const entries = await getCollection("experience", (entry) => entry.data.kind === kind);
   return entries.toSorted((a, b) => a.data.order - b.data.order);
 }

@@ -9,7 +9,9 @@ export const getStaticPaths = langStaticPaths;
 const lang = langFromParam(Astro.params.lang);
 const t = ui[lang];
 const work = await experienceOf("work");
+const projects = await experienceOf("project");
 const education = await experienceOf("education");
+const labelSeparator = lang === "fr" ? " : " : ": ";
 
 const period = (start: number, end: number | null) => {
   if (end === null) return `${start} – ${t.experience.present}`;
@@ -39,6 +41,28 @@ const period = (start: number, end: number | null) => {
           <p class="eyebrow">{period(data.start, data.end)}</p>
           <h3>{data.role[lang]}</h3>
           <p class="org">{[data.org, data.place].filter(Boolean).join(" · ")}</p>
+          {data.summary && <p>{data.summary[lang]}</p>}
+          {data.highlights && (
+            <ul class="highlights">
+              {data.highlights.map((item) => (
+                <li>
+                  <strong>{item.label[lang]}</strong>
+                  {labelSeparator}
+                  {item.text[lang]}
+                </li>
+              ))}
+            </ul>
+          )}
+        </li>
+      ))}
+    </ol>
+
+    <h2>{t.experience.projects}</h2>
+    <ol class="timeline" data-projects>
+      {projects.map(({ data }) => (
+        <li>
+          <p class="eyebrow">{period(data.start, data.end)}</p>
+          <h3>{data.role[lang]}</h3>
           {data.summary && <p>{data.summary[lang]}</p>}
         </li>
       ))}
@@ -104,6 +128,14 @@ const period = (start: number, end: number | null) => {
 
   .timeline .eyebrow {
     margin-bottom: var(--space-1);
+  }
+
+  .timeline .highlights li {
+    padding-bottom: var(--space-1);
+  }
+
+  .timeline .highlights li::before {
+    content: none;
   }
 
   .org {
