@@ -18,3 +18,7 @@ export function localizedPath(lang: Lang, page: PageKey): string {
 export function langStaticPaths(): { params: { lang: string | undefined } }[] {
   return LANGS.map((lang) => ({ params: { lang: lang === DEFAULT_LANG ? undefined : lang } }));
 }
+
+export function cvPath(lang: Lang): string {
+  return `/cv/clement-rieux-cv-${lang}.pdf`;
+}

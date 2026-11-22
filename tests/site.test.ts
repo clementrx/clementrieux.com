@@ -166,6 +166,13 @@ describe("whole site", () => {
     }
   });
 
+  it.each(LANGS)("offers the %s CV as a PDF from the experience page", (lang) => {
+    const href = `/cv/clement-rieux-cv-${lang}.pdf`;
+    const link = loadPage(pageUrl(lang, "experience/")).one("a[data-cv]");
+    expect(attr(link, "href")).toBe(href);
+    expect(readFileSync(distFile(href)).subarray(0, 5).toString()).toBe("%PDF-");
+  });
+
   it("serves a 404 page in all three languages", () => {
     const doc = loadPage("/404.html");
     for (const lang of LANGS) {

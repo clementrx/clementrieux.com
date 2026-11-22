@@ -1,7 +1,7 @@
 ---
 import Base from "@/layouts/Base.astro";
 import { ui } from "@/i18n/ui";
-import { langFromParam, langStaticPaths } from "@/i18n/utils";
+import { cvPath, langFromParam, langStaticPaths } from "@/i18n/utils";
 import { experienceOf } from "@/lib/content";
 
 export const getStaticPaths = langStaticPaths;
@@ -26,6 +26,11 @@ const period = (start: number, end: number | null) => {
   <div class="container prose">
     <h1>{t.experience.title}</h1>
     <p class="lead">{t.experience.intro}</p>
+    <p>
+      <a class="button button-secondary" href={cvPath(lang)} type="application/pdf" data-cv>
+        {t.experience.downloadCv}
+      </a>
+    </p>
 
     <h2>{t.experience.work}</h2>
     <ol class="timeline">
