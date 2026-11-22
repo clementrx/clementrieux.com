@@ -60,6 +60,7 @@ interface UI {
     skills: string;
     languages: string;
     present: string;
+    downloadCv: string;
     skillGroups: SkillGroup[];
     spokenLanguages: string[];
   };
@@ -129,6 +130,7 @@ export const ui = {
       skills: "Skills",
       languages: "Languages",
       present: "present",
+      downloadCv: "Download my CV (PDF)",
       skillGroups: [
         { label: "Programming", items: ["Python", "R", "SQL"] },
         {
@@ -265,6 +267,7 @@ export const ui = {
       skills: "Compétences",
       languages: "Langues",
       present: "aujourd'hui",
+      downloadCv: "Télécharger mon CV (PDF)",
       skillGroups: [
         { label: "Programmation", items: ["Python", "R", "SQL"] },
         {
@@ -401,6 +404,7 @@ export const ui = {
       skills: "Competencias",
       languages: "Idiomas",
       present: "actualidad",
+      downloadCv: "Descargar mi CV (PDF)",
       skillGroups: [
         { label: "Programación", items: ["Python", "R", "SQL"] },
         {
